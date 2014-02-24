@@ -545,7 +545,7 @@
 
 			echo "<td><img src='". site_url("img/seg/32x32/$img.png")."' /></td>";
 			echo "<td>#$estado->codigo</td>";
-			echo "<td style='font-size:95%;'>".utf8_decode($estado->descripcion)."</td>";
+			echo "<td style='font-size:95%;'>".$estado->descripcion."</td>";
                  	echo "</tr>";
 	 } ?>
 </table>

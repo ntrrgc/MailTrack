@@ -30,7 +30,7 @@
 			$query = preg_replace('/(\d\d\d\d\d\d\d\d\d\d)/',date("M/D/Y @ h:m:s",intval('$1')), $query);
 //echo date("d/m/Y, H:i",$row->fecha);
 			echo "<ul class='informe'>";
-			$array = split(" Y ",$query);
+			$array = explode(" Y ",$query);
 			foreach($array as $val){
 				echo "<li>$val</li>";
 			}

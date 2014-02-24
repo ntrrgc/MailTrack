@@ -51,7 +51,7 @@ if($error > 0){	?>
 	elseif($est->codigo < 400) $div="success";
 		else $div="error";  
 	?>
-		<div class="<?php echo $div; ?>"><a href="<?php echo site_url('ayuda#5'); ?>"><i>#Cod <?php echo $est->codigo; ?></i>:</a> <?php echo utf8_decode($est->descripcion); ?></div>
+		<div class="<?php echo $div; ?>"><a href="<?php echo site_url('ayuda#5'); ?>"><i>#Cod <?php echo $est->codigo; ?></i>:</a> <?php echo $est->descripcion; ?></div>
 
 		<br/>
 
@@ -125,11 +125,11 @@ if($error > 0){	?>
 			<tr <?php echo $tr; ?>>
 			<td nowrap="nowrap"><?php  echo date("d/m/Y - H:i",$row->fecha);?></td>
 			<td><?php echo $row->maquina; ?></td>
-			<td><a href="<?php echo site_url('ayuda'); ?>"<i>#Cod <?php echo $row->estado; ?>:</i></a> <?php echo utf8_decode($info_estado->descripcion); ?> 
+			<td><a href="<?php echo site_url('ayuda'); ?>"<i>#Cod <?php echo $row->estado; ?>:</i></a> <?php echo $info_estado->descripcion; ?> 
 			<?php if ($row->descripcion != ""){ ?>
 				<br/><br/><?php 
-					$descripcion = utf8_decode($row->descripcion); 
-				$info = utf8_decode($row->adicional); 
+					$descripcion = $row->descripcion; 
+				$info = $row->adicional; 
 				echo $descripcion;
 
 				//Vemos si el usuario tiene permiso para ver la carpeta destino dentro del buzón

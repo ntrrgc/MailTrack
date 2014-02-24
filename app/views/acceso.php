@@ -37,7 +37,7 @@
 						<tr style="font-size:16px; font-weight:bold;">
 							<td colspan="2"><center><?php echo $acceso->usuario; ?>@<?php echo $acceso->ip; ?></center></td>
 							<td>&nbsp;</td>
-							<td colspan="1"><center>Acceso vía <?php echo utf8_decode($acceso->protocolo); ?></center></td>
+							<td colspan="1"><center>Acceso vía <?php echo $acceso->protocolo; ?></center></td>
 							<td>&nbsp;</td>
 							<td colspan="1"><center>Sistema de correo US</center></td>
 						</tr>
@@ -78,7 +78,7 @@
                                                 </tr>
 						<tr class="even">
 							<td>Tipo de acceso</td>
-							<td><?php echo utf8_decode($acceso->protocolo); ?></td>
+							<td><?php echo $acceso->protocolo; ?></td>
 						</tr>
                                                 <tr>
                                                         <td>Número de accesos</td>

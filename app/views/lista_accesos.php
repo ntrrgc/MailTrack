@@ -95,7 +95,7 @@
                                                 <tr <?php echo $tr; ?>>
                                                         <td><a href="<?php echo site_url(''); ?>accesos/ver/<?php echo $row->aid;?>"><center><img src="<?php echo site_url("img/seg/32x32/$img.png"); ?>" border="0" width="24" height="24" title="Ver detalle"/></center></a></td>
 	                                                <td><?php echo $row->usuario;?></td> 
-						        <td><center><?php echo utf8_decode($row->protocolo);?></center></td>
+						        <td><center><?php echo $row->protocolo;?></center></td>
                                                         <td><?php  echo $row->contador;?>
 							<?php echo ($row->contador > 1)?'accesos':'acceso'; ?>
 							</td>
