@@ -103,7 +103,7 @@
 <select name="estado" style="width: 400px; word-wrap:break-word;">
 <option value="0" selected="selected">Cualquier estado</option>
 <option value="0"></option>
-<option value="< 200">>> CORREO ENCOLADO</option>
+<option value="< 200">&gt;&gt; CORREO ENCOLADO</option>
 <?php if ($this->controlacceso->permisoAdministracion()){ ?>
 <option value="= 1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- Correo encolado en la estafeta de entrada.</option>
 <option value="= 31">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- Correo válido encolado en estafetas antivirus.</option>
@@ -116,7 +116,7 @@
 <?php } ?>
 <option value="0"></option>
 
-<option value="> 400">>> CORREO DETENIDO</option>
+<option value="> 400">&gt;&gt; CORREO DETENIDO</option>
 <?php if ($this->controlacceso->permisoAdministracion()){ ?>
 <option value="= 431">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- Correo marcado como virus o malware.</option>
 <option value="= 432">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- Correo marcado como violación de política.</option>
@@ -127,7 +127,7 @@
 
 <option value="0"></option>
 
-<option value="> 300 AND estado < 400">>> CORREO ENTREGADO</option>
+<option value="> 300 AND estado < 400">&gt;&gt; CORREO ENTREGADO</option>
 <?php if ($this->controlacceso->permisoAdministracion()){ ?>
 <option value="= 331">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-  Correo SPAM entregado con éxito en el buzón del destinatario.</option>
 <option value="= 332">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-  Correo SPAM entregado con éxito al MTA remoto del destinatario.</option>
