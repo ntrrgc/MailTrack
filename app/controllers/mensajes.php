@@ -143,10 +143,12 @@ class Mensajes extends CI_Controller {
 		$config['cur_tag_open'] = '<div id="paginacion_actual">';
 		$config['cur_tag_close'] = '</div>';
 
+                $query_args = array();
+
 		if($filtro == "recibidos"){
 
                 	$config['base_url'] = site_url("mensajes/lista/recibidos");
-			$where = "mto = '$cuenta'";
+                        $where = "mto = ".$this->db->escape($cuenta);
  		
 		}elseif ($filtro == "informe"){
 
@@ -155,14 +157,15 @@ class Mensajes extends CI_Controller {
 			if ($this->session->userdata('where_consulta') != ""){
 				$where = $this->session->userdata('where_consulta');
 			}else{
-				$where = "(mfrom = '$cuenta' OR mto = '$cuenta')";
+                                $where = "(mfrom = ".$this->db->escape($cuenta).
+                                         " OR mto = ".$this->db->escape($cuenta).")";
 			}
 			$informe = 1;
 
 		}elseif ($filtro == "enviados"){	
 
                 	$config['base_url'] = site_url("mensajes/lista/enviados");
-			$where = "mfrom = '$cuenta'";
+			$where = "mfrom = ".$this->db->escape($cuenta);
 
 		}elseif ($filtro == "resultados"){
 
@@ -182,64 +185,52 @@ class Mensajes extends CI_Controller {
 	
 				if($_POST['mfrom'] != ""){
 					$cadena = str_replace("*", "%", $_POST['mfrom']);
-					$cadena = str_replace("'", "\'", $cadena);
-                                        $cadena = str_replace(";", "", $cadena);
-                                        $cadena = str_replace("--", "", $cadena);
-					$where = $where." AND mfrom LIKE '$cadena'";
+                                        $cadena = str_replace("?", "_", $cadena);
+					$where .= " AND mfrom LIKE ".$this->db->escape($cadena);
 				}
 
                         	if($_POST['mto'] != ""){
-					$cadena = str_replace("*", "%", $_POST['mto']);
-					$cadena = str_replace("'", "\'", $cadena);
-                                        $cadena = str_replace(";", "", $cadena);
-                                        $cadena = str_replace("--", "", $cadena);
-					$where = $where." AND mto LIKE '$cadena'";
+                                        $cadena = str_replace("*", "%", $_POST['mto']);
+                                        $cadena = str_replace("?", "_", $cadena);
+					$where .= " AND mto LIKE ".$this->db->escape($cadena);
 				}
                         
 				if($_POST['message_id'] != "")
 				{
-					$cadena = str_replace("'", "\'", $_POST['message_id']);
-                                        $cadena = str_replace(";", "", $cadena);
-                                        $cadena = str_replace("--", "", $cadena);
-					$where = $where." AND message_id = '".$cadena."'";
+                                        $where .= " AND message_id = ".
+                                                $this->db->escape($_POST['message_id']);
 				}
                         
 	                        if($_POST['estado'] != "0")
 				{
-					$cadena = str_replace(" OR ", "", $_POST['estado']);
-                                        $cadena = str_replace(" DROP ", "", $cadena);
-                                        $cadena = str_replace(" DELETE ", "", $cadena);
-                                        $cadena = str_replace(";", "", $cadena);
-                                        $cadena = str_replace("--", "", $cadena);
-					$where = $where." AND estado ".$cadena."";
+                                        if (preg_match('/^[<>=] \d+( AND estado < 400)?$/', $_POST['estado'])) {
+                                                $where .= " AND estado ".$_POST['estado'];
+                                        } else {
+                                                /* Break-in attempt */
+                                        }
 				}
 		
 				if($_POST['asunto'] != ""){
-					$cadena = str_replace("'", "\'", $_POST['message_id']);
-					$cadena = str_replace(";", "", $_POST['message_id']);
-					$cadena = str_replace("--", "", $_POST['message_id']);
-					$vowels = array("á", "é", "í", "ó", "ú", "?", "ñ", "ç");
-					$_POST['asunto'] = str_replace($vowels, "%", $_POST['asunto']);
-					$_POST['asunto'] = trim($_POST['asunto']);
 					if($_POST['condicion_asunto'] == "es"){
-						$where = $where." AND asunto LIKE '".$_POST['asunto']."'";
+						$where .= " AND asunto = ".$this->db->escape($_POST['asunto']);
 					}else{
 						if($_POST['condicion_asunto'] == "contiene_todas"){
-							$op = "AND";
-							$comp = ">";
+							$op = " AND ";
 						}else{
-							$op = "OR";
-							$comp = "<";
+							$op = " OR ";
 						}
-						$palabras = split(" ", $_POST['asunto']);
-						$where = $where." AND (";
-						foreach ($palabras as $pal) {
-							$where = $where." asunto LIKE '%".$pal."%' $op";
-						}
-						$where = $where." mid $comp 0 )";
+						$palabras = explode(" ", trim($_POST['asunto']));
+                                                $palabras_like = array();
+                                                foreach ($palabras as $pal) {
+                                                        $pal_like = $this->db->escape_like_str($pal);
+                                                        $palabras_like[] = "asunto LIKE '%" . $pal_like . "%'";
+                                                }
+                                                $where .= " AND (" . implode($op, palabras_like) . ")";
 					}
 				}
 
+                                /* Dead code?
+                                 
                                 if($_POST['historial'] != "")
                                 {
 					$cadena = str_replace("*", "%", $_POST['historial']);
@@ -247,20 +238,31 @@ class Mensajes extends CI_Controller {
                                         $cadena = str_replace(";", "", $cadena);
                                         $cadena = str_replace("--", "", $cadena);
                                         $where = $where." AND virus LIKE '$cadena' ";
-                                }
+                                } */
 
                                 if($_POST['fecha1'] != "Cualquier fecha"){
-                                       $where = $where." AND fecha >= ".strtotime($_POST['fecha1']);
+                                        $fecha1 = strtotime($_POST['fecha1']);
+                                        if ($fecha1) {
+                                                $where .= " AND fecha <= ".$this->db->escape($fecha1);
+                                        } else {
+                                                /* Invalid date, suspicious */
+                                        }
 				}
 
                                 if($_POST['fecha2'] != "Cualquier fecha"){
-					$fecha2 = strtotime($_POST['fecha2']) + 86400;
-                                        $where = $where." AND fecha <= $fecha2";
+                                        $fecha2 = strtotime($_POST['fecha2']);
+                                        if ($fecha2) {
+                                                $fecha2 += 86400; // end of the day
+                                                $where .= " AND fecha <= ".$this->db->escape($fecha2);
+                                        } else {
+                                                /* Invalid date, suspicious */
+                                        }
 				}
 
 				//Si el usuario no es admin, solo podrá consultar SUS mensajes
 				if (!$this->controlacceso->permisoAdministracion()) {
-					$where = $where. " AND (mto = '$cuenta' OR mfrom = '$cuenta')";
+                                        $where .= " AND (mto = ".$this->db->escape($cuenta)." OR ".
+                                                        "mfrom = ".$this->db->escape($cuenta).")";
 		                }
 
 				//Incrementamos el número de búsquedas realizadas en la aplicación
@@ -271,7 +273,8 @@ class Mensajes extends CI_Controller {
 			//Solo nos queda la opción de todos los mensajes
                 	$config['base_url'] = site_url("mensajes/lista/todos");
 			$filtro = "todos";
-			$where = "(mfrom = '$cuenta' OR mto = '$cuenta')";
+			$where = "(mto = ".$this->db->escape($cuenta)." OR ".
+                                 "mfrom = ".$this->db->escape($cuenta).")";
 		}
 
                 //Registramos la consulta del administrador si fue una búsqueda y si estaba activa la opción desde config.php
@@ -292,7 +295,7 @@ class Mensajes extends CI_Controller {
 		if($sentido == "desc") { $contrario = "asc"; } else { $contrario = "desc"; }
 		
 		$this->db->where($where);
-		$this->db->order_by("$campo $sentido");
+		$this->db->order_by($campo, $sentido);
 		$mensajes = $this->db->get('mensajes',$config['per_page'], (int)$this->uri->segment(6));
 		
 		$this->db->where($where);
@@ -309,7 +312,8 @@ class Mensajes extends CI_Controller {
 		$error = 0;
 		if (!$this->controlacceso->permisoAdministracion())
                 {
-			$where_usuario = "(mfrom = '$cuenta' OR mto = '$cuenta')";
+			$where_usuario = "(mto = ".$this->db->escape($cuenta)." OR ".
+                                         "mfrom = ".$this->db->escape($cuenta).")";
 	                $this->db->where($where_usuario);
 	                $user = $this->db->get('mensajes');
         	        $totales_usuario = $user->num_rows();
