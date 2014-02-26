@@ -225,7 +225,7 @@ class Mensajes extends CI_Controller {
                                                         $pal_like = $this->db->escape_like_str($pal);
                                                         $palabras_like[] = "asunto LIKE '%" . $pal_like . "%'";
                                                 }
-                                                $where .= " AND (" . implode($op, palabras_like) . ")";
+                                                $where .= " AND (" . implode($op, $palabras_like) . ")";
 					}
 				}
 
