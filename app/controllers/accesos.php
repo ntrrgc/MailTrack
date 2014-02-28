@@ -78,42 +78,40 @@ class Accesos extends CI_Controller {
 			//Procesamos los campos de búsqueda, los limpiamos y preparamos la clausula where
 				if($_POST['usuario'] != ""){
                                         $cadena = str_replace("*", "%", $_POST['usuario']);
-                                        $cadena = str_replace("'", "\'", $cadena);
-                                        $cadena = str_replace(";", "", $cadena);
-                                        $cadena = str_replace("--", "", $cadena);
-                                        $where = $where." AND usuario LIKE '$cadena'";
+                                        $cadena = str_replace("?", "_", $cadena);
+                                        $where .= " AND usuario LIKE ".$this->db->escape($cadena);
                                 }
                                 if($_POST['ip'] != ""){
                                         $cadena = str_replace("*", "%", $_POST['ip']);
-                                        $cadena = str_replace("'", "\'", $cadena);
-                                        $cadena = str_replace(";", "", $cadena);
-                                        $cadena = str_replace("--", "", $cadena);
-                                        $where = $where." AND LIKE '$cadena'";
+                                        $cadena = str_replace("?", "_", $cadena);
+                                        $where .= " AND ip LIKE ".$this->db->escape($cadena);
                                 }
                                 if($_POST['tipo'] != "cualquiera"){
-                                        $cadena = str_replace("'", "\'", $_POST['tipo']);
-                                        $cadena = str_replace(";", "", $cadena);
-                                        $cadena = str_replace("--", "", $cadena);
-                                        $where = $where." AND tipo = '$cadena'";
+                                        $where .= " AND tipo = ".$this->db->escape($_POST['tipo']);
                                 }
                                 if($_POST['estado'] != "cualquiera"){
-                                        $cadena = str_replace("'", "\'", $_POST['estado']);
-                                        $cadena = str_replace(";", "", $cadena);
-                                        $cadena = str_replace("--", "", $cadena);
-                                        $where = $where." AND estado = $cadena";
+                                        $where .= " AND estado = ".$this->db->escape($_POST['estado']);
                                 }
   
-                                if($_POST['fecha1'] != "Cualquier fecha")
-                                       $where = $where." AND fecha >= ".strtotime($_POST['fecha1']);
+                                if($_POST['fecha1'] != "Cualquier fecha") {
+                                        $fecha1 = strtotime($_POST['fecha1']);
+                                        if ($fecha1) {
+                                                $where .= " AND fecha >= ".$this->db->escape($fecha1);
+                                        }
+                                }
 
                                 if($_POST['fecha2'] != "Cualquier fecha"){
-                                        $fecha2 = strtotime($_POST['fecha2']) + 86400;
-                                        $where = $where." AND fecha <= $fecha2";
+                                        $fecha2 = strtotime($_POST['fecha2']);
+                                        if ($fecha2) {
+                                                $fecha2 += 86400;
+                                                $where .= " AND fecha <= ".$this->db->escape($fecha2);
+                                        }
                                 }
 
                                 //Si el usuario no es admin, solo podrá consultar SUS mensajes
                                 if (!$this->controlacceso->permisoAdministracion()) {
-        				$where = "(usuario = '$cuenta' OR usuario = '$uid')";                                
+                                        $where = "(usuario = ".$this->db->escape($cuenta).
+                                                 " OR usuario = ".$this->db->escape($uid).")";                                
                                 }
                                 
 				//Incrementamos el número de búsquedas realizadas en la aplicación
@@ -137,7 +135,7 @@ class Accesos extends CI_Controller {
 		if($sentido == "desc") { $contrario = "asc"; } else { $contrario = "desc"; }
 		
 		$this->db->where($where);
-		$this->db->order_by("$campo $sentido");
+		$this->db->order_by($campo, $sentido);
 		$accesos = $this->db->get('accesos',$config['per_page'], (int)$this->uri->segment(6));
 		
 		$this->db->where($where);
