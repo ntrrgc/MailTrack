@@ -27,7 +27,7 @@
                         $query = str_replace(" > "," es mayor que ",$query);
                 //      $query = preg_replace('/(\d\d\d\d\d\d\d\d\d\d)/i',date("d/m/Y",intval("$1")), $query);
                         echo "<ul class='informe'>";
-                        $array = split(" Y ",$query);
+                        $array = explode(" Y ",$query);
                         foreach($array as $val){
                                 echo "<li>$val</li>";
                         }
