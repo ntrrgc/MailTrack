@@ -27,7 +27,7 @@ class Admin extends CI_Controller {
 		parent::__construct();	
 		$this->controlacceso->control();
                 if (!$this->controlacceso->permisoAdministracion()) {
-                        show_error(403, 'Acceso denegado');
+                        show_error('Acceso denegado', 403);
                 }
 	}
 	
@@ -49,7 +49,7 @@ class Admin extends CI_Controller {
 
                 $this->controlacceso->control();
                 if (!$this->controlacceso->permisoAdministracion()) {
-                        show_error(403, 'Acceso denegado');
+                        show_error('Acceso denegado', 403);
                 }
                 $data = array(
                                 'subtitulo' => 'Administración',

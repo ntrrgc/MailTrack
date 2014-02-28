@@ -44,7 +44,7 @@ class Buscador extends CI_Controller {
                 $this->load->view('cabecera', $data);
 
 	        if (!$this->controlacceso->permisoAdministracion()) {
-                        show_error(403, 'Acceso denegado');
+                        show_error('Acceso denegado', 403);
                 }else{
                 	$this->load->view('buscador_accesos.php');
 		}
