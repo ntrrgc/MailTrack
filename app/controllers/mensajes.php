@@ -134,8 +134,8 @@ class Mensajes extends CI_Controller {
                 //Cargamos los enlaces a la paginacion
                 $this->load->library('pagination');
                 $config['per_page'] = $this->config->item('num_item_pagina');
-                $config['first_link'] = '<<';
-                $config['last_link'] = '>>';
+                $config['first_link'] = '&lt;&lt';
+                $config['last_link'] = '&gt;&gt;';
 		$config['uri_segment'] = 6;
 		$config['num_links'] = 2;	
 		$config['full_tag_open'] = '<div id="paginacion">';
