@@ -110,7 +110,7 @@ else
 		    echo "" > $RUTA_LOG/$HOST;
 		fi
         
-		diff $RUTA_LOG/$HOST.actual $RUTA_LOG/$HOST | grep "<" | sed -e 's/^< //g' > $RUTA/log/temp
+		diff $RUTA_LOG/$HOST.actual $RUTA_LOG/$HOST | grep "^<" | sed -e 's/^< //g' > $RUTA/log/temp
 	
 		echo ""
 		echo "Ejecutando $PROGRAMA sobre $RUTA_LOG/$HOST";
