@@ -1,4 +1,4 @@
-#!/usr/bin/perl/
+#!/usr/bin/perl
 #
 # Procesamiento de maillog de buzones (Postfix + Dovecot) para Seguimiento de correo
 # -------------------------------------------------------------------------------------
@@ -26,7 +26,7 @@ use Encode;
 use Time::Local qw(timelocal);
 use POSIX qw(strftime);
 
-$PATH = $ARGV[0];
+$PATH = "/srv/mailtrack/scripts";
 require("$PATH/etc/config.pl");
 require("$PATH/bin/funciones.pl");
 
@@ -88,7 +88,7 @@ while (<IN>) {
 		my @hora =  split(/:/,$fechaent[2]);
 		my $fecha = timelocal($hora[2],$hora[1],$hora[0],$fechaent[1],$meses{$fechaent[0]},$anio_mensaje);
 		my $mid = $mapa{"$4-mid"};
-		my $from = $mapa{"$4-from"};
+		my $from = limpia_lavadora($mapa{"$4-from"});
 		my $to = $5;
 		my $redireccion = $6;
 		my $nuevo_destino = ""; #Guardamos en esta variable la redirección si existe

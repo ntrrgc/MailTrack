@@ -22,6 +22,20 @@
 # *    <http://www.gnu.org/licenses/>.
 # */
 
+sub limpia_lavadora {
+        # Recibe una dirección de correo en el formato SRS de la Lavadora y la
+        # decodifica, devolviendo la dirección original antes de pasar por la
+        # lavadora.
+        my ($address,) = @_;
+        if ($address =~ /^SRS0=[^=]+=[^=]+=([^=]+)=([^@]+)@/) {
+                my $host = $1;
+                my $user = $2;
+                return "$user\@$host";
+        } else {
+                return $address;
+        }
+}
+
 sub calcula_estado()
 {
 
