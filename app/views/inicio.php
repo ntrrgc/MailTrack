@@ -43,12 +43,12 @@
 
 					<div class="col2 right">
 
-						<center><img src="<?php echo site_url('img/logo-us.gif'); ?>" width="220" height="220"/></center>
+						<center><img src="<?php echo site_url('img/logo-usal.png'); ?>" width="265" height="220"/></center>
 						<br/>
-						<p>Bienvenid@ a la aplicación de seguimiento de correo electrónico de la Universidad de Sevilla.</p>
-						<p> Con esta aplicación, usted podrá comprobar el estado de los correos electrónicos enviados y recibidos desde su cuenta de correo corporativa.</p>
+						<p>Bienvenido a la aplicación de seguimiento de correo electrónico de la Universidad de Salamanca.</p>
+						<p> Con esta aplicación, usted podrá comprobar el estado de los correos electrónicos enviados y recibidos desde su cuenta de correo.</p>
 						<p> Si es la primera vez que utiliza este servicio, recomendamos que lea la <a href="<?php echo site_url('ayuda'); ?>">sección de ayuda</a> de la aplicación.</p>
-							<cite>Atentamente, el Servicio de Informática y Comunicaciones.</cite>
+							<cite>Atentamente, los Servicios Informáticos.</cite>
 
 					</div>
 
