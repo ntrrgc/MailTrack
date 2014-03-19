@@ -34,11 +34,13 @@ if($error > 0){	?>
 		<td><img align="left" src="<?php echo site_url("img/seg/".$destinatario."user$est->eto.png");?>"/></td>
 		</tr>
 		<tr style="font-size:16px; font-weight:bold;">
-		<td colspan="2"><center>
+		<td colspan><center>
 		<?php echo wordwrap($mensaje->mfrom, 33, "<br />",true); ?>
-		</center></td>
+                </center></td>
+                <td>&nbsp;</td>
 		<td><center>Mensaje</center></td>
-		<td colspan="2"><center>
+                <td>&nbsp;</td>
+		<td><center>
 		<?php $var = ($mensaje->redirect != '') ? "$mensaje->mto >>>> $mensaje->redirect" : "$mensaje->mto";
 	echo wordwrap($var, 53, "<br />",true);
 	?></center></td>
