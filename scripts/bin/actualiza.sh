@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 #
 # Script de alimentación de la base de datos de seguimiento
 # -----------------------------------------------------------------------
@@ -22,10 +22,16 @@
 # *    <http://www.gnu.org/licenses/>.
 # */
 
-RUTA=`echo /var/www/html/Seguimiento/scripts`;
-RUTA_LOG=`echo /tmp/seglog`;
-FLAG=`echo $RUTA/bin/seguimiento_flag_lock`;
-FLAG_BORRADO=`echo $RUTA/bin/seguimiento_flag_delete_lock`;
+RUTA="/srv/mailtrack/scripts"
+RUTA_LOG="/tmp/seglog"
+FLAG="/run/mailtrack/seguimiento_flag_lock"
+FLAG_BORRADO="/run/mailtrack/seguimiento_flag_delete_lock"
+
+function clear_flags {
+        rm -f "$FLAG" "$FLAG_BORRADO"
+}
+
+trap clear_flags EXIT
 
 if [ -f $FLAG ]; then
 	#El bloqueo esta activo por otra ejecución concurrente de indexado
