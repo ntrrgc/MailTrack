@@ -47,7 +47,6 @@ class Admin extends CI_Controller {
 		}
 
 
-                $this->controlacceso->control();
                 if (!$this->controlacceso->permisoAdministracion()) {
                         show_error('Acceso denegado', 403);
                 }
