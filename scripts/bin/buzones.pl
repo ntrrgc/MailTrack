@@ -23,6 +23,7 @@
 # */
 
 use Encode;
+use HTML::Entities;
 use Time::Local qw(timelocal);
 use POSIX qw(strftime);
 
@@ -48,6 +49,14 @@ while (<IN>) {
 
 		my $key = "$mid-eti";
 		$mapa{$key} = $etiqueta;
+	}
+	elsif($_=~/(.+) postfix\/cleanup\[(.+)\]: (.+): info: header subject/i){
+		my $key = "$3-asunto";
+		# Algunos mensajes tienen varias líneas Subject (por ejemplo, las devoluciones).
+		# Nos quedamos con la primera.
+		if (!exists $mapa{$key}) {
+			$mapa{$key} = obtener_asunto($_);
+		}
 	}
 	elsif($_=~/(.+) postfix\/qmgr\[(.+)\]: (.+): from=<(.+)>/){
 		my $key = "$3-from";
@@ -87,8 +96,12 @@ while (<IN>) {
 
 		my @hora =  split(/:/,$fechaent[2]);
 		my $fecha = timelocal($hora[2],$hora[1],$hora[0],$fechaent[1],$meses{$fechaent[0]},$anio_mensaje);
+		my $etiqueta = $4;
 		my $mid = $mapa{"$4-mid"};
 		my $from = limpia_lavadora($mapa{"$4-from"});
+                if ($from eq "") {
+			$from = "Sistema de correo";
+                }
 		my $to = $5;
 		my $redireccion = $6;
 		my $nuevo_destino = ""; #Guardamos en esta variable la redirección si existe
@@ -159,8 +172,17 @@ while (<IN>) {
 		else
 		{
 			#No existía, lo añadimos
-			$asunto = "<i>Mensaje procesado en $maquina</i>";
-			$query = "INSERT INTO mensajes (message_id,mfrom,mto,redirect,asunto,estado,fecha) VALUES ('$mid','$from','$to','$nuevo_destino',\"$asunto\",$estado,$fecha) ON DUPLICATE KEY UPDATE estado = $estado;";
+			if (exists $mapa{"$etiqueta-asunto"}) {
+				$asunto = $mapa{"$etiqueta-asunto"};
+				if ($asunto =~ /\S/) {
+					$asunto = HTML::Entities::encode_entities($asunto);
+				} else {
+					$asunto = "<i>(sin asunto)</i>";
+				}
+			} else {
+				$asunto = "<i>(sin asunto)</i>";
+			}
+			$query = "INSERT INTO mensajes (message_id,mfrom,mto,redirect,asunto,estado,fecha) VALUES ('$mid','$from','$to','$nuevo_destino',".$dbh->quote($asunto).",$estado,$fecha) ON DUPLICATE KEY UPDATE estado = $estado;";
 
 			$sth = $dbh->prepare($query);
 			$sth->execute();
