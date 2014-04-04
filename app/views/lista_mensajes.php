@@ -92,11 +92,11 @@
 
 				?>
                                                 <tr <?php echo $tr; ?>>
-                                                        <td><a href="<?php echo site_url(''); ?>mensajes/ver/<?php echo $row->mid;?>"><center><img src="<?php echo site_url("img/seg/32x32/$img.png"); ?>" border="0" width="24" height="24" title="Ver detalle"/></center></a></td>
+                                                        <td><a href="<?php echo site_url(''); ?>mensajes/ver/<?php echo htmlentities($row->mid);?>"><center><img src="<?php echo site_url("img/seg/32x32/$img.png"); ?>" border="0" width="24" height="24" title="Ver detalle"/></center></a></td>
                                                         <td><?php echo date("d/m/Y, H:i",$row->fecha);?></td>
-                                                        <td><?php echo $this->texto->corta_texto($row->mfrom,22);?></td>
-                                                        <td><?php echo $this->texto->corta_texto($row->mto,22);?></td>
-                                                        <td><?php echo $this->texto->parsea_texto($this->texto->corta_texto($row->asunto,54));?></td>
+                                                        <td><?php echo htmlentities($row->mfrom);?></td>
+                                                        <td><?php echo htmlentities($row->mto);?></td>
+                                                        <td><?php echo $row->asunto;?></td>
                                                 </tr>
 		<?php } //foreach ?>
 

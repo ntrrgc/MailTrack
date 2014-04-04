@@ -23,7 +23,7 @@
 # */
 
 use Encode;
-use HTML::Entities;
+use HTML::Entities qw(encode_entities);
 use Time::Local qw(timelocal);
 use POSIX qw(strftime);
 
@@ -122,7 +122,8 @@ while (<IN>) {
 			$nuevo_destino = $to;
 			$to = $1;
 			$estado = $ENTREGADO_REDIRECCION;
-			$adicional = "- Postfix/smtp informó: El destinatario utiliza una redirección desde la cuenta <i>$to</i> a la cuenta <i>$nuevo_destino</i>.";
+			$adicional = "- Postfix/smtp informó: El destinatario utiliza una redirección desde la cuenta <i>".
+                                     encode_entities($to)."</i> a la cuenta <i>".encode_entities($nuevo_destino)."</i>.";
 			
 			 #Incrementamos el número de correos redirigidos
                         $query = "UPDATE estadisticas SET redirecciones = redirecciones + 1;";
@@ -138,9 +139,9 @@ while (<IN>) {
 		#Miramos si ya existia el mensaje en la BBDD
 		$mid =~s/AAAAAA==@(.+)//g; # Esto lo hacemos pq postfix añade este sufijo a ciertos message_id
 		my $midcadena = "%".$mid."%";
-		$query = "SELECT message_id,estado FROM mensajes WHERE message_id LIKE '$midcadena' AND mto='$to';";
+		$query = "SELECT message_id,estado FROM mensajes WHERE message_id LIKE ? AND mto=?;";
 		$sth = $dbh->prepare($query);
-		$sth->execute;
+		$sth->execute($midcadena, $to);
 		my @row;
 
 #Sino se encontró ningún mensaje, vamos a buscar uno parecido teniendo en cuenta 
@@ -150,10 +151,12 @@ while (<IN>) {
 			#No encontró el mensaje, hacemos un cruce temporal
                         $fechainf = $fecha - 500;
                         $fechasup = $fecha + 100;
-                        $query = "SELECT message_id,estado FROM mensajes WHERE mfrom='$from' AND mto='$to' AND fecha > $fechainf AND fecha < $fechasup AND estado < 300 ORDER BY fecha DESC;";
+                        $query = "SELECT message_id,estado FROM mensajes ".
+                                 "WHERE mfrom = ? AND mto = ? AND fecha > ? AND fecha < ? ".
+                                 "AND estado < 300 ORDER BY fecha DESC;";
 		#print "$query\n";
                         $sth = $dbh->prepare($query);
-                        $sth->execute;
+                        $sth->execute($from, $to, $fechainf, $fechasup);
 			@row = $sth->fetchrow_array(  );
 		}
 
@@ -165,9 +168,9 @@ while (<IN>) {
 			$mid = $row[0];
 			$estado = calcula_estado($estado,$estado_actual);
 			
-			$query = "UPDATE mensajes SET estado=$estado, redirect='$nuevo_destino' WHERE mto='$to' AND message_id='$mid';";
+			$query = "UPDATE mensajes SET estado = ?, redirect = ? WHERE mto = ? AND message_id = ?;";
 			$sth = $dbh->prepare($query);
-			$sth->execute();
+			$sth->execute($estado, $nuevo_destino, $to, $mid);
 		}
 		else
 		{
@@ -175,17 +178,18 @@ while (<IN>) {
 			if (exists $mapa{"$etiqueta-asunto"}) {
 				$asunto = $mapa{"$etiqueta-asunto"};
 				if ($asunto =~ /\S/) {
-					$asunto = HTML::Entities::encode_entities($asunto);
+					$asunto = encode_entities($asunto);
 				} else {
 					$asunto = "<i>(sin asunto)</i>";
 				}
 			} else {
 				$asunto = "<i>(sin asunto)</i>";
 			}
-			$query = "INSERT INTO mensajes (message_id,mfrom,mto,redirect,asunto,estado,fecha) VALUES ('$mid','$from','$to','$nuevo_destino',".$dbh->quote($asunto).",$estado,$fecha) ON DUPLICATE KEY UPDATE estado = $estado;";
+			$query = "INSERT INTO mensajes (message_id,mfrom,mto,redirect,asunto,estado,fecha) ".
+                                 "VALUES (?,?,?,?,?,?,?) ON DUPLICATE KEY UPDATE estado = ?;";
 
 			$sth = $dbh->prepare($query);
-			$sth->execute();
+			$sth->execute($mid, $from, $to, $nuevo_destino, $asunto, $estado, $fecha, $estado);
 
                         #Incrementamos el número de correos procesados
                         $query = "UPDATE estadisticas SET procesados = procesados + 1;";
@@ -194,9 +198,10 @@ while (<IN>) {
 		}
 
 		#En cualquier caso, actualizamos el historial del mensaje
-		$query = "INSERT IGNORE INTO historial (message_id,estado,hto,fecha,maquina,descripcion,adicional) VALUES ('$mid',$estado,'$to',$fecha,'$maquina','$desc','$adicional');";
+		$query = "INSERT IGNORE INTO historial (message_id,estado,hto,fecha,maquina,descripcion,adicional) ".
+                         "VALUES (?,?,?,?,?,?,?);";
 		$sth = $dbh->prepare($query);
-		$sth->execute();
+		$sth->execute($mid, $estado, $to, $fecha, $maquina, $desc, $adicional);
 
 		#Incrementamos el numero de correos para dominios propios si el estado fue entregado local
 		if ($estado eq $ENTREGADO_LOCAL)

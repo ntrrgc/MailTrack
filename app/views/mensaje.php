@@ -35,14 +35,14 @@ if($error > 0){	?>
 		</tr>
 		<tr style="font-size:16px; font-weight:bold;">
 		<td colspan><center>
-		<?php echo wordwrap($mensaje->mfrom, 33, "<br />",true); ?>
+		<?php echo htmlentities(wordwrap($mensaje->mfrom, 33, "<br />",true)); ?>
                 </center></td>
                 <td>&nbsp;</td>
 		<td><center>Mensaje</center></td>
                 <td>&nbsp;</td>
 		<td><center>
 		<?php $var = ($mensaje->redirect != '') ? "$mensaje->mto >>>> $mensaje->redirect" : "$mensaje->mto";
-	echo wordwrap($var, 53, "<br />",true);
+	echo htmlentities(wordwrap($var, 53, "<br />",true));
 	?></center></td>
 		</tr>
 		</table>
@@ -68,11 +68,11 @@ if($error > 0){	?>
 		</tr>
 		<tr class="even">
 		<td>Remitente</td>
-		<td><?php echo $mensaje->mfrom; ?></td>
+		<td><?php echo htmlentities($mensaje->mfrom); ?></td>
 		</tr>
 		<tr>	
 		<td>Destinatario</td>
-		<td><?php echo $mensaje->mto; ?></td>
+		<td><?php echo htmlentities($mensaje->mto); ?></td>
 		</tr>
 		<tr class="even">
 		<td>Asunto</td>
@@ -88,7 +88,7 @@ if($error > 0){	?>
 		</tr>
 		<tr class="even">
 		<td>Message-id</td>
-		<td><?php echo $mensaje->message_id; ?></td>
+		<td><?php echo htmlentities($mensaje->message_id); ?></td>
 		</tr>
 		</table>
 
