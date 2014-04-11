@@ -331,7 +331,7 @@
         <a name="<?php echo "$cont.$subcont"; ?>"></a><li>
         <a href="#"><?php echo "$cont.$subcont. "; ?>¿Quién puede utilizar esta aplicación web?</a></li>
 	<?php $subcont++; ?>
-<p>La aplicación web Seguimiento podrá ser utilizada por toda persona que cuente con una dirección de correo activa de la universidad de Sevilla (esto es, una cuenta del dominio @us.es o bien @alum.us.es).</p>
+<p>La aplicación web Seguimiento podrá ser utilizada por toda persona que cuente con una dirección de correo activa de la universidad de Sevilla (esto es, una cuenta del dominio @usal.es).</p>
 <p>Cada persona tendrá derecho a consultar todos sus mensajes, esto es, aquellos mensajes enviados o recibidos que involucren a su dirección de correo corporativa.</p> 
 
         <a name="<?php echo "$cont.$subcont"; ?>"></a><li>
@@ -346,14 +346,14 @@
         <?php $subcont++; ?>
 <p>Si ha usado anteriormente la aplicación de seguimiento habrá notado que no se muestran todos sus mensajes, sino únicamente los más recientes. Ésto es así debido a que la aplicación elimina automáticamente todos los mensajes con fecha anterior a 10 días.</p>
 
-<p>Si desea conocer el estado de un correo anterior a ese período de tiempo, puede ponerse en contacto con nosotros, escribiéndonos un correo electrónico a <a href="mailto:correo@us.es">correo@us.es</a>.
+<p>Si desea conocer el estado de un correo anterior a ese período de tiempo, puede ponerse en contacto con nosotros, escribiéndonos un correo electrónico a <a href="mailto:servicios.red@usal.es">servicios.red@usal.es</a>.
 
 
         <a name="<?php echo "$cont.$subcont"; ?>"></a><li>
         <a href="#"><?php echo "$cont.$subcont. "; ?>No encuentro el mensaje que buscaba</a></li>
         <?php $subcont++; ?>
 <p>Si desea conocer el estado de un mensaje y este no aparece en su listado de mensajes puede ser debido a que el mensaje tiene una fecha anterior a 10 días y ha sido eliminado de nuestra base de datos.</p>
-<p>Si por el contrario el mensaje que busca es más reciente y aun así no aparece en "Mis mensajes", puede ponerse en contacto con nosotros, escribiéndonos un correo electrónico a <a href="mailto:correo@us.es">correo@us.es</a> e intentaremos determinar la causa del problema.</p>
+<p>Si por el contrario el mensaje que busca es más reciente y aun así no aparece en "Mis mensajes", puede ponerse en contacto con nosotros, escribiéndonos un correo electrónico a <a href="mailto:servicios.red@usal.es">servicios.red@usal.es</a> e intentaremos determinar la causa del problema.</p>
 
 
 
@@ -724,7 +724,7 @@
         <a name="<?php echo "$cont.$subcont"; ?>"></a><li>
         <a href="#"><?php echo "$cont.$subcont. "; ?>Soporte al usuario</a></li>
         <?php $subcont++; ?>
-<p>Si la ayuda que busca no se encuentra en esta página o bien tiene alguna dificultad para realizar el seguimiento algún correo electrónico, si simplemente quiere hacer una sugerencia o reportar un error en la aplicación, puede hacerlo escribiendo un correo a la dirección de correo electrónico <a href="mailto:correo@us.es">correo@us.es</a>.</p>
+<p>Si la ayuda que busca no se encuentra en esta página o bien tiene alguna dificultad para realizar el seguimiento algún correo electrónico, si simplemente quiere hacer una sugerencia o reportar un error en la aplicación, puede hacerlo escribiendo un correo a la dirección de correo electrónico <a href="mailto:servicios.red@usal.es">servicios.red@usal.es</a>.</p>
 
         <a name="<?php echo "$cont.$subcont"; ?>"></a><li>
         <a href="#"><?php echo "$cont.$subcont. "; ?>Licencia de Software</a></li>
@@ -758,7 +758,7 @@
 
 						<div class="box-content">
 							<p>¿No encuentra respuesta a alguna de sus dudas sobre la aplicación de seguimiento en esta página?</p>
-							<p>Puede plantearnos sus dudas enviándonos un correo a la siguiente dirección de correo electrónico: <a href="mailto:correo@us.es">correo@us.es</a></p>
+							<p>Puede plantearnos sus dudas enviándonos un correo a la siguiente dirección de correo electrónico: <a href="mailto:servicios.red@usal.es">servicios.red@usal.es</a></p>
 						</div>
 	
 					</div>

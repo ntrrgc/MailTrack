@@ -42,7 +42,7 @@
 
 		<div class="right">
 
-			<a href="http://www.us.es/campus/servicios/sic/">Servicio de Informática y Comunicaciones</a> - <a href="http://www.us.es/">Universidad de Sevilla</a> 
+			<a href="http://lazarillo.usal.es/">Servicios Informáticos</a> - <a href="http://www.usal.es/">Universidad de Salamanca</a> 
 		</div>
 		
 		<div class="clearer">&nbsp;</div>
