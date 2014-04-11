@@ -26,6 +26,7 @@ use Encode;
 use HTML::Entities qw(encode_entities);
 use Time::Local qw(timelocal);
 use POSIX qw(strftime);
+use DateTime::Format::ISO8601;
 
 $PATH = "/srv/mailtrack/scripts";
 require("$PATH/etc/config.pl");
@@ -82,20 +83,8 @@ while (<IN>) {
 
 	} #elseif
 	elsif($_=~/(.+) (.+) postfix.+\[(.+)\]: (.+): to=<(.+?)>(.+) status=(.+) \((.+)\)/){
-		@fechaent = split(/\s+/,$1);
+		my $fecha = DateTime::Format::ISO8601->parse_datetime($1)->epoch();
 		$maquina = $2;
-		my $mes_actual = strftime "%m", localtime;
-		my $anio_actual = strftime "%Y", localtime;
-
-		my $anio_mensaje = $anio_actual;
-
-		if($meses{$linea[0]} > $mes_actual)
-		{
-			$anio_mensaje = $anio_actual - 1;
-		}
-
-		my @hora =  split(/:/,$fechaent[2]);
-		my $fecha = timelocal($hora[2],$hora[1],$hora[0],$fechaent[1],$meses{$fechaent[0]},$anio_mensaje);
 		my $etiqueta = $4;
 		my $mid = $mapa{"$4-mid"};
 		my $from = limpia_lavadora($mapa{"$4-from"});
