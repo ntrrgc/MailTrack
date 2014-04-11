@@ -153,6 +153,8 @@ table.data-table td {
 	background: #F6F6F6;
 	font-size: 9pt;
 	border: 1px solid #E6E6E6;
+	text-overflow: ellipsis;
+	overflow: hidden;
 }
 table.data-table tr.even td {background: #FCFCFC;}
 
