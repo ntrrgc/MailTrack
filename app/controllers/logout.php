@@ -25,21 +25,8 @@ class Logout extends CI_Controller {
 		parent::__construct();	
                 $this->controlacceso->control();
 	}
-	
+
 	function index()
-	{
-                $data = array(
-                                'subtitulo' => 'Confirmar cierre sesión',
-				'controlador' => 'logout',
-				'parent' => '',
-                );
-                $this->load->view('cabecera', $data);
-
-		$this->load->view('salir.php');
-		$this->load->view('pie.php');
-	}
-
-	function salir()
         {
 		//Registramos la consulta del administrador si fue una búsqueda y si estaba activa la opción desde config.php
                 if ($this->config->item('admin_log') == "true")

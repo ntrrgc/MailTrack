@@ -24,9 +24,8 @@ class Controlacceso {
         private $identidad=false;
 
         function Controlacceso() {
-                require_once('libopensso-php/Opensso_wrapper.php');
+
                 $this->CI =& get_instance();
-                $this->o = new Opensso_wrapper();
 		$this->identidad = $this->CI->session->userdata('identidad');
         }
 
@@ -34,38 +33,42 @@ class Controlacceso {
          * Fuerza la autenticación si no se ha producido aún
          */
         function control() {
-                if ($this->identidad !== FALSE) {
-                        return TRUE;
-                } else {
-                        if ($this->o->check_and_force_sso(current_url())) {
-                                $rel = $this->o->attribute('usesrelacion');
-                                $rel = is_array($rel) ? $rel : array($rel);
-                                $data = array(
-                                                'identidad' => $this->o->attribute('uid'),
-                                                'uid' => $this->o->attribute('uid'),
-                                                'mail' => $this->o->attribute('mail'),
-                                                'sexo' => $this->o->attribute('schacgender'),
-                                                'nombre' => ucwords(strtolower($this->o->attribute('cn')))
-                                );
+                require_once(BASEPATH . '../app/config/cas.php');
+                require_once(BASEPATH . '../app/libraries/CAS-1.3.2/CAS.php');
 
-                                // Guardar sesión
-                                $this->CI->session->set_userdata($data);
+                $client = phpCAS::client(CAS_VERSION_2_0, $cas_host, $cas_port, $cas_context);
+                phpCAS::setCasServerCACert($cas_server_ca_cert_path);
+                phpCAS::forceAuthentication();
 
-				//incrementamos el número de visitas a la aplicación
-                                $this->CI->db->query('UPDATE estadisticas SET visitas = visitas + 1;');
+                // Si el usuario se ha logeado con una sesión nueva...
+                if ($this->CI->session->userdata('identidad') == FALSE) {
+                        //incrementamos el número de visitas a la aplicación
+                        $this->CI->db->query('UPDATE estadisticas SET visitas = visitas + 1;');
 
-		                //Registramos el acceso en los logs si estaba activa la opción desde config.php
-                		if ($this->CI->config->item('admin_log') == "true")
-                		{
-                                	log_message('info', 'Usuario "'.$this->o->attribute('uid').'" inició sesión en seguimiento."');
-                		}
-                                
-				redirect();
-                        } else {
-                                // Permitimos la redirección
-                                exit;
+                        //Registramos el acceso en los logs si estaba activa la opción desde config.php
+                        if ($this->CI->config->item('admin_log') == "true")
+                        {
+                                log_message('info', 'Usuario "'.phpCAS::getUser().'" inició sesión en seguimiento."');
                         }
                 }
+
+                $attrs = phpCAS::getAttributes();
+
+                $data = array(
+                        'identidad' => $attrs['uid'],
+                        'uid' => $attrs['uid'],
+                        'alias' => phpCAS::getUser(),
+                        'mail' => $attrs['mail'],
+                        'sexo' => "1",
+                        'nombre' => 'Senor Earrojo'
+                );
+
+                // Guardar sesión
+                $this->CI->session->set_userdata($data);
+                $this->identidad = $data;
+
+                // Si hemos llegado hasta aquí, el usuario está autenticado.
+                return TRUE;
         }
 
 
@@ -76,7 +79,7 @@ class Controlacceso {
         function permisoAdministracion() {
                 $admins = $this->CI->config->item('administradores');
 
-                return in_array($this->identidad, $admins);
+                return in_array($this->identidad['uid'], $admins);
         }
 
 	
@@ -85,7 +88,7 @@ class Controlacceso {
 	 */
 
 	function logout() {
-		$this->o->logout(TRUE);
+                phpCAS::logout();
 	}
 
 }
