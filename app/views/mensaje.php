@@ -76,7 +76,7 @@ if($error > 0){	?>
 		</tr>
 		<tr class="even">
 		<td>Asunto</td>
-		<td><?php echo $this->texto->parsea_texto($mensaje->asunto); ?></td>
+		<td><?php echo $mensaje->asunto; ?></td>
 		</tr>
 		<tr>
 		<td>Fecha envío</td>

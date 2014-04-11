@@ -24,7 +24,6 @@ class Mensajes extends CI_Controller {
 	{
 		parent::__construct();
                 $this->controlacceso->control();
-		$this->load->library('texto');
 	}
 	
 	function ver($idmensaje)

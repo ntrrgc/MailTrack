@@ -24,7 +24,6 @@ class Accesos extends CI_Controller {
 	{
 		parent::__construct();
                 $this->controlacceso->control();
-		$this->load->library('texto');
 	}
 	
 	function lista($filtro='todos',$campo='fecha',$sentido='desc'){
