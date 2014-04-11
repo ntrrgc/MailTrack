@@ -64,6 +64,11 @@ else
 	        IP=`echo $line |  cut -d , -f2`
 	        LOG=`echo $line |  cut -d , -f3`
 	        PROGRAMA=`echo $line |  cut -d , -f4`
+
+                if [ "$PROGRAMA" = "adas.pl" ]; then
+                        # El script de adAS no necesita descarga de logs
+                        continue
+                fi
 	
 	        echo "Descargando el log $LOG de $HOST......."
 	        scp $IP:$LOG $RUTA_LOG/$HOST.actual
@@ -110,7 +115,9 @@ else
 		    echo "" > $RUTA_LOG/$HOST;
 		fi
         
-		diff $RUTA_LOG/$HOST.actual $RUTA_LOG/$HOST | grep "^<" | sed -e 's/^< //g' > $RUTA/log/temp
+                if  [ "$PROGRAMA" != "adas.pl" ]; then
+                        diff $RUTA_LOG/$HOST.actual $RUTA_LOG/$HOST | grep "^<" | sed -e 's/^< //g' > $RUTA/log/temp
+                fi
 	
 		echo ""
 		echo "Ejecutando $PROGRAMA sobre $RUTA_LOG/$HOST";
@@ -119,8 +126,10 @@ else
 		echo "Ejecución completada (OK)."
 		echo ""
 	
-		mv $RUTA_LOG/$HOST.actual $RUTA_LOG/$HOST
-		rm $RUTA/log/temp
+                if  [ "$PROGRAMA" != "adas.pl" ]; then
+                        mv $RUTA_LOG/$HOST.actual $RUTA_LOG/$HOST
+                        rm $RUTA/log/temp
+                fi
 	done
 
 	date

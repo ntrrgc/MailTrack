@@ -106,7 +106,7 @@ CREATE TABLE IF NOT EXISTS accesos (
         aid INT UNSIGNED NOT NULL AUTO_INCREMENT,
         usuario VARCHAR(200) NOT NULL,
         ip VARCHAR(16) NOT NULL,
-        tipo ENUM('buzonweb', 'pop', 'imap') NOT NULL DEFAULT 'buzonweb',
+        tipo VARCHAR(200) NOT NULL,
         protocolo VARCHAR (15) NOT NULL,
         fecha INT NOT NULL,
         contador INT NOT NULL DEFAULT 0,
@@ -117,7 +117,7 @@ CREATE TABLE IF NOT EXISTS accesos (
         INDEX(tipo),
         INDEX(ip),
 
-        UNIQUE(usuario,estado,protocolo,ip),
+        UNIQUE(usuario,estado,protocolo,tipo,ip),
 
         PRIMARY KEY(aid)
         ) ENGINE=InnoDB;

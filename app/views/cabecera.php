@@ -103,9 +103,9 @@ if (isset($js_adicionales)) {
 
 				<?php if($controlador == "accesos"){ ?>
                                         <li><a href="<?php echo site_url('accesos/lista/todos'); ?>"><img src="<?php echo site_url('img/menu/globe_up.png'); ?>"/>Todos mis accesos</a></li>
-                                        <li><a href="<?php echo site_url('accesos/lista/buzonweb'); ?>"><img src="<?php echo site_url('img/menu/globe_up.png'); ?>" />Accesos Buzón Web</a></li>
+                                        <li><a href="<?php echo site_url('accesos/lista/idusal'); ?>"><img src="<?php echo site_url('img/menu/globe_up.png'); ?>" />Accesos idUsal</a></li>
                                         <li><a href="<?php echo site_url('accesos/lista/imap'); ?>"><img src="<?php echo site_url('img/menu/globe_up.png'); ?>"/>Accesos IMAP</a></li>
-                                        <li><a href="<?php echo site_url('accesos/lista/pop'); ?>"><img src="<?php echo site_url('img/menu/globe_download.png'); ?>" />Accesos POP</a></li>
+                                        <li><a href="<?php echo site_url('accesos/lista/pop'); ?>"><img src="<?php echo site_url('img/menu/globe_up.png'); ?>" />Accesos POP</a></li>
                                 <?php } ?>
 
 				 <?php if($controlador == "buscador" && $this->controlacceso->permisoAdministracion() ){ ?>

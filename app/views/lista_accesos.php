@@ -17,14 +17,14 @@
 <?php } ?>
 <?php 
 	if($filtro == "todos" ){ $titulo = "Todos mis accesos"; $img = "globe_up.png"; } 
-	elseif($filtro == "buzonweb"){
-		$titulo="Accesos desde Buzón Web"; $img="globe_up.png";
-	}
-        elseif($filtro == "pop"){
-                $titulo="Accesos POP"; $img="globe_download.png";
+        elseif($filtro == "idusal"){
+                $titulo="Accesos idUsal"; $img="globe_up.png";
         }
         elseif($filtro == "imap"){
                 $titulo="Accesos IMAP"; $img="globe_up.png";
+        }
+        elseif($filtro == "pop"){
+                $titulo="Accesos POP"; $img="globe_up.png";
         }
         elseif($filtro == "resultados"){
                 $titulo="Resultados de la búsqueda"; $img="search_globe.png";
@@ -39,8 +39,10 @@
                                                <div class="content-separator"></div>
 
 <?php
-        //Cargamos el cuadro resumen de condiciones de filtrado
-        $this->load->view('info_condiciones_accesos');
+        if($this->controlacceso->permisoAdministracion()) {
+                //Cargamos el cuadro resumen de condiciones de filtrado
+                $this->load->view('info_condiciones_accesos');
+        }
 ?>
 
 
@@ -55,19 +57,24 @@
 						<tr>
 <?php $img = "<img src='".site_url('img/'.$sentido.'.png')."' />"; ?>
 <?php if($campo == "estado") { $cad = $img; $order = $contrario;}else{ $cad = ""; $order = $sentido; }?>
-<th width="45px"><a href="<?php echo $base; ?>/estado/<?php echo $order;?>"><?php echo $cad;?> Estado</a></th>
+<th width="40px"><a href="<?php echo $base; ?>/estado/<?php echo $order;?>"><?php echo $cad;?> Estado</a></th>
 
+<?php if($this->controlacceso->permisoAdministracion()) { ?>
 <?php if($campo == "usuario") { $cad = $img; $order = $contrario;}else{ $cad = ""; $order = $sentido; }?>
-<th width="110px"><a href="<?php echo $base; ?>/usuario/<?php echo $order;?>"><?php echo $cad;?> Usuario</a></th>
+<th width="90px"><a href="<?php echo $base; ?>/usuario/<?php echo $order;?>"><?php echo $cad;?> Usuario</a></th>
+<?php } ?>
 
 <?php if($campo == "protocolo") { $cad = $img; $order = $contrario;}else{ $cad = ""; $order = $sentido; }?>
-<th width="80px"><a href="<?php echo $base; ?>/protocolo/<?php echo $order;?>"><?php echo $cad;?> Tipo acceso</a></th>
+<th width="70px"><a href="<?php echo $base; ?>/protocolo/<?php echo $order;?>"><?php echo $cad;?> Protocolo</a></th>
+
+<?php if($campo == "tipo") { $cad = $img; $order = $contrario;}else{ $cad = ""; $order = $sentido; }?>
+<th width="110px"><a href="<?php echo $base; ?>/tipo/<?php echo $order;?>"><?php echo $cad;?> Tipo acceso</a></th>
 
 <?php if($campo == "contador") { $cad = $img; $order = $contrario;}else{ $cad = ""; $order = $sentido; }?>
 <th width="100px"><a href="<?php echo $base; ?>/contador/<?php echo $order;?>"><?php echo $cad;?> Num. accesos</a></th>
 
 <?php if($campo == "ip") { $cad = $img; $order = $contrario;}else{ $cad = ""; $order = $sentido; }?>
-<th width="95x"><a href="<?php echo $base; ?>/ip/<?php echo $order;?>"><?php echo $cad;?> Dirección IP</a></th>
+<th width="90x"><a href="<?php echo $base; ?>/ip/<?php echo $order;?>"><?php echo $cad;?> Dirección IP</a></th>
 							
 <?php if($campo == "fecha") { $cad = $img; $order = $contrario;}else{ $cad = ""; $order = $sentido; }?>
 <th width="210px;"><a href="<?php echo $base; ?>/fecha/<?php echo $order;?>"><?php echo $cad; ?> Fecha de último acceso</a></th>
@@ -94,8 +101,11 @@
 				?>
                                                 <tr <?php echo $tr; ?>>
                                                         <td><a href="<?php echo site_url(''); ?>accesos/ver/<?php echo $row->aid;?>"><center><img src="<?php echo site_url("img/seg/32x32/$img.png"); ?>" border="0" width="24" height="24" title="Ver detalle"/></center></a></td>
-	                                                <td><?php echo $row->usuario;?></td> 
-						        <td><center><?php echo $row->protocolo;?></center></td>
+                                                        <?php if($this->controlacceso->permisoAdministracion()) { ?>
+	                                                <td><?php echo htmlentities($row->usuario);?></td> 
+                                                        <?php } ?>
+						        <td><?php echo htmlentities($row->protocolo);?></td>
+                                                        <td><?php echo htmlentities($row->tipo);?></td>
                                                         <td><?php  echo $row->contador;?>
 							<?php echo ($row->contador > 1)?'accesos':'acceso'; ?>
 							</td>

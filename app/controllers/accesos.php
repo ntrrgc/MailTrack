@@ -34,7 +34,7 @@ class Accesos extends CI_Controller {
 		* $filtro:
 		* Calculamos los accesos consultar en función del parámetro filtro: pop,imap,buzonweb,resultados,todos
 		*/
-		$cuenta = $this->session->userdata('mail');
+		$cuenta = $this->session->userdata('alias');
 		$uid = $this->session->userdata('uid');
 
                 //Cargamos los enlaces a la paginacion
@@ -51,15 +51,15 @@ class Accesos extends CI_Controller {
 
 		$where = "(usuario = '$cuenta' OR usuario = '$uid')";
 
-		if($filtro == "buzonweb"){
-			$config['base_url'] = site_url("accesos/lista/buzonweb");
-			$where = $where." AND tipo = 'buzonweb'";
+		if($filtro == "idusal"){
+			$config['base_url'] = site_url("accesos/lista/idusal");
+			$where = $where." AND protocolo = 'idusal'";
 		}elseif ($filtro == "imap"){	
 			$config['base_url'] = site_url("accesos/lista/imap");
-			$where = $where." AND tipo = 'imap'";
+			$where = $where." AND protocolo = 'imap'";
 		}elseif ($filtro == "pop"){	
 			$config['base_url'] = site_url("accesos/lista/pop");
-			$where = $where." AND tipo = 'pop'";
+			$where = $where." AND protocolo = 'pop3'";
 		}elseif ($filtro == "resultados"){
 			$config['base_url'] = site_url("accesos/lista/resultados");
 			$where = "aid > 0";

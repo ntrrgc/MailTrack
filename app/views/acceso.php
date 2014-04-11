@@ -32,14 +32,14 @@
 							<td><img align="right" src="<?php echo site_url("img/seg/next.png"); ?>" /></td>
 							<td><img align="right" src="<?php echo site_url("img/seg/world".$acceso->estado.".png"); ?>" /></td>
 							<td><img align="right" src="<?php echo site_url("img/seg/next.png"); ?>" /></td>
-							<td><img align="right" src="<?php echo site_url("img/seg/us.png"); ?>" /></td>
+							<td><img align="right" src="<?php echo site_url("img/seg/usal.png"); ?>" /></td>
 						</tr>
 						<tr style="font-size:16px; font-weight:bold;">
 							<td colspan="2"><center><?php echo $acceso->usuario; ?>@<?php echo $acceso->ip; ?></center></td>
 							<td>&nbsp;</td>
 							<td colspan="1"><center>Acceso vía <?php echo $acceso->protocolo; ?></center></td>
 							<td>&nbsp;</td>
-							<td colspan="1"><center>Sistema de correo US</center></td>
+                                                        <td colspan="1"><center><?php echo $acceso->tipo; ?></center></td>
 						</tr>
 					</table>
 

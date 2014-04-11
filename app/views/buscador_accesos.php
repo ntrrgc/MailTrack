@@ -15,7 +15,7 @@
 <legend>Formulario de busqueda</legend>
 <form method="POST" action="<?php echo site_url('accesos/lista/resultados'); ?>">
 <input type="hidden" name="oculto" value="1" />
-	<label>UVUS del usuario</label>
+	<label>Id de usuario</label>
 	<?php 
 	$data = array(
               'name'        => 'usuario',
