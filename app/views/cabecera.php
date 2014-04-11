@@ -65,8 +65,6 @@ if (isset($js_adicionales)) {
 
 <?php if($controlador == "buscador"){ echo "<li class='current_page_item current_page".$parent."'>";} else{ echo "<li>";  } ?><a href="<?php echo site_url('buscador'); ?>"><img src="<?php echo site_url('img/menu/search.png'); ?>"/>Buscador</a></li>
 
-<?php if($controlador == "indicadores"){ echo "<li class='current_page_item current_page".$parent."'>";} else{ echo "<li>";  } ?><a href="<?php echo site_url('indicadores'); ?>"><img src="<?php echo site_url('img/menu/pie_chart.png'); ?>"  style="margin-top:0px;"/>Indicadores</a></li>
-
 <?php if($controlador == "ayuda"){ echo "<li class='current_page_item current_page".$parent."'>";} else{ echo "<li>";  } ?><a href="<?php echo site_url('ayuda'); ?>"><img src="<?php echo site_url('img/menu/help.png'); ?>"  style="margin-top:0px;"/>Ayuda</a></li>
 
 <?php  if ($this->controlacceso->permisoAdministracion()){
