@@ -29,7 +29,11 @@
                         echo "<ul class='informe'>";
                         $array = explode(" Y ",$query);
                         foreach($array as $val){
-                                echo "<li>$val</li>";
+                                $sval = htmlspecialchars($val);
+                                $sval = str_replace(htmlspecialchars($path."user.png'/>"), $path."user.png'/>", $sval);
+                                $sval = str_replace(htmlspecialchars($path."calendar.png'/>"), $path."calendar.png'/>", $sval);
+                                $sval = str_replace(htmlspecialchars($path."info.png'/>"), $path."info.png'/>", $sval);
+                                echo "<li>".$sval."</li>";
                         }
                         echo "</ul>";
                 ?>
