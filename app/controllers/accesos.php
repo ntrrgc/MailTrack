@@ -230,11 +230,21 @@ class Accesos extends CI_Controller {
 
                 if($sexo == "2"){ $usuario = "she_";}else{ $usuario = "";} 
 
+                if (!$this->controlacceso->permisoAdministracion()) {
+                        # Si el usuario no es administrador sólo podrá ver sus accesos.
+                        # Aprovechando esto, mejor mostramos su alias, si tiene, en vez de su nombre
+                        # de usuario canónico.
+                        $nombre_usuario = $this->session->userdata('alias') or $usuario;
+                } else {
+                        $nombre_usuario = $usuario;
+                }
+
 		$error = 0;
 
 		$data = array(
                                 'error' => $error,
 				'usuario' => $usuario,
+                                'nombre_usuario' => $nombre_usuario,
                                 'acceso' => $row,
                                 'subtitulo' => 'Vista detalla de acceso',
                                 'controlador' => 'accesos',

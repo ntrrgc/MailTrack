@@ -35,7 +35,7 @@
 							<td><img align="right" src="<?php echo site_url("img/seg/usal.png"); ?>" /></td>
 						</tr>
 						<tr style="font-size:16px; font-weight:bold;">
-							<td colspan="2"><center><?php echo $acceso->usuario; ?>@<?php echo $acceso->ip; ?></center></td>
+							<td colspan="2"><center><?php echo htmlspecialchars($nombre_usuario); ?>@<?php echo $acceso->ip; ?></center></td>
 							<td>&nbsp;</td>
 							<td colspan="1"><center>Acceso vía <?php echo $acceso->protocolo; ?></center></td>
 							<td>&nbsp;</td>
@@ -70,7 +70,7 @@
 						</tr>
 						<tr class="even">
 							<td>Usuario</td>
-							<td><?php echo $acceso->usuario; ?></td>
+							<td><?php echo htmlspecialchars($nombre_usuario); ?></td>
 						</tr>
                                                 <tr>
                                                         <td>Fecha del último acceso</td>
@@ -93,9 +93,9 @@
 							<td>
 							<p>
 							<?php if($acceso->estado == "0"){ //Acceso correcto ?>
-							<font color="green">Acceso correcto</font>: Se concede el acceso al sistema de correo de la Universidad de Salamanca desde la dirección IP <?php echo $acceso->ip; ?> para el usuario "<?php echo $acceso->usuario; ?>".
+							<font color="green">Acceso correcto</font>: Se concede el acceso al sistema de correo de la Universidad de Salamanca desde la dirección IP <?php echo $acceso->ip; ?> para el usuario "<?php echo htmlspecialchars($nombre_usuario); ?>".
 							<?php } else{ //Acceso fallido ?>
-							<font color="red">Acceso fallido</font>: Se deniega el acceso al sistema de correo de la Universidad de Salamanca desde la dirección IP <?php echo $acceso->ip; ?> para el usuario "<?php echo $acceso->usuario; ?>" debido a que los credenciales de usuario (nombre de usuario y/o contraseña) eran incorrectos.
+							<font color="red">Acceso fallido</font>: Se deniega el acceso al sistema de correo de la Universidad de Salamanca desde la dirección IP <?php echo $acceso->ip; ?> para el usuario "<?php echo htmlspecialchars($nombre_usuario); ?>" debido a que los credenciales de usuario (nombre de usuario y/o contraseña) eran incorrectos.
 							<?php } ?>
 							</p>
 
