@@ -38,7 +38,9 @@ class Mensajes extends CI_Controller {
 		$permiso = false;
 		if($mensajes->num_rows())
 		{
-			if($cuenta_actual == $row->mto || $cuenta_actual == $row->mfrom || $this->controlacceso->permisoAdministracion())
+                        if(strcasecmp($cuenta_actual, $row->mto) == 0 ||
+                           strcasecmp($cuenta_actual, $row->mfrom) == 0 ||
+                           $this->controlacceso->permisoAdministracion())
 			{ 
 				$permiso = true; 
 			}
