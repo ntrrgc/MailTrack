@@ -10,7 +10,7 @@
                                                 <div class="content-separator"></div>
 
 
-<p style="font-size:14px;">A continuación se detallan los indicadores de uso de la aplicación de Seguimiento de Mensajes, en la Universidad de Sevilla.</p>
+<p style="font-size:14px;">A continuación se detallan los indicadores de uso de la aplicación de Seguimiento de Mensajes, en la Universidad de Salamanca.</p>
 
 
 

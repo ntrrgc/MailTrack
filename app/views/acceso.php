@@ -93,9 +93,9 @@
 							<td>
 							<p>
 							<?php if($acceso->estado == "0"){ //Acceso correcto ?>
-							<font color="green">Acceso correcto</font>: Se concede el acceso al sistema de correo de la Universidad de Sevilla desde la dirección IP <?php echo $acceso->ip; ?> para el usuario "<?php echo $acceso->usuario; ?>".
+							<font color="green">Acceso correcto</font>: Se concede el acceso al sistema de correo de la Universidad de Salamanca desde la dirección IP <?php echo $acceso->ip; ?> para el usuario "<?php echo $acceso->usuario; ?>".
 							<?php } else{ //Acceso fallido ?>
-							<font color="red">Acceso fallido</font>: Se deniega el acceso al sistema de correo de la Universidad de Sevilla desde la dirección IP <?php echo $acceso->ip; ?> para el usuario "<?php echo $acceso->usuario; ?>" debido a que los credenciales de usuario (nombre de usuario y/o contraseña) eran incorrectos.
+							<font color="red">Acceso fallido</font>: Se deniega el acceso al sistema de correo de la Universidad de Salamanca desde la dirección IP <?php echo $acceso->ip; ?> para el usuario "<?php echo $acceso->usuario; ?>" debido a que los credenciales de usuario (nombre de usuario y/o contraseña) eran incorrectos.
 							<?php } ?>
 							</p>
 

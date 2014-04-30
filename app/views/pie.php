@@ -37,12 +37,11 @@
 	<div class="center-wrapper">
 
 		<div class="left">
-			 Seguimiento: <a href="http://seguimiento.org.es/">Web del proyecto</a> - <a href="https://github.com/vtellez/seguimiento/">Código fuente</a>
 		</div>
 
 		<div class="right">
 
-			<a href="http://lazarillo.usal.es/">Servicios Informáticos</a> - <a href="http://www.usal.es/">Universidad de Salamanca</a> 
+			<a href="http://identidad.usal.es/">Universidad de Salamanca. Servicios Informáticos, C.P.D. servicios.red@usal.es </a>  
 		</div>
 		
 		<div class="clearer">&nbsp;</div>

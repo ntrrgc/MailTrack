@@ -9,7 +9,7 @@
 				<div class="separator-vertical">
 
 					<div class="col2 left">
-						<img src="<?php echo site_url('img/seg/home.png'); ?>" style="margin-top:-15px;" width="48" height="48" align="left" /> <h2 class="left">Seguimiento de mensajes</h2>
+						<img src="<?php echo site_url('img/seg/home.png'); ?>" style="margin-top:-15px;" width="48" height="48" align="left" /> <h2 class="left">Seguimiento </h2>
 
 						<div class="content-separator"></div>
 						<a href="<?php echo site_url('mensajes/lista/todos'); ?>"><img src="<?php echo site_url('img/seg/mail.png'); ?>" width="64" height="64" alt="" class="left bordered" />
@@ -45,10 +45,9 @@
 
 						<center><img src="<?php echo site_url('img/logo-usal.png'); ?>" width="265" height="220"/></center>
 						<br/>
-						<p>Bienvenido a la aplicación de seguimiento de correo electrónico de la Universidad de Salamanca.</p>
-						<p> Con esta aplicación, usted podrá comprobar el estado de los correos electrónicos enviados y recibidos desde su cuenta de correo.</p>
+						<p>Bienvenido a la aplicación de seguimiento de la Universidad de Salamanca.</p>
+						<p> Con esta aplicación, usted podrá comprobar el estado de los correos electrónicos enviados y recibidos desde su cuenta de correo, así como los accesos a los diferentes servicios telemáticos.</p>
 						<p> Si es la primera vez que utiliza este servicio, recomendamos que lea la <a href="<?php echo site_url('ayuda'); ?>">sección de ayuda</a> de la aplicación.</p>
-							<cite>Atentamente, los Servicios Informáticos.</cite>
 
 					</div>
 

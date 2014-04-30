@@ -184,7 +184,7 @@ if($error > 0){	?>
 			"<img src=\"".site_url('/img/seg/32x32/wait.png')."\" style=\"width:24px; height:24px;\"/> En proceso";
 			?></td>		
 			<td>Define el valor en segundos del tiempo que el mensaje ha empleado en recorrer
-			todas las estafetas de correo de la Universidad de Sevilla hasta llegar al buzón corporativo o al MTA remoto del destinatario.</td>		
+			todas las estafetas de correo de la Universidad de Salamanca hasta llegar al buzón corporativo o al MTA remoto del destinatario.</td>		
 			</tr>
 			</table>
 			

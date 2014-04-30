@@ -3,8 +3,8 @@
 
 <head>
 	<meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
-	<meta name="description" content="Seguimiento de correo electrónico. Universidad de Sevilla."/>
-	<meta name="keywords" content="Seguimiento, Universidad, Sevilla" />
+	<meta name="description" content="Seguimiento de correo electrónico. Universidad de Salamanca."/>
+	<meta name="keywords" content="Seguimiento, Universidad, Salamanca" />
 	<meta name="author" content="Víctor Téllez - vtellez@us.es Servicio de Informática y Comunicaciones" />
         <link href='https://fonts.googleapis.com/css?family=Josefin+Sans+Std+Light' rel='stylesheet' type='text/css'>
 	<link rel="stylesheet" type="text/css" href="<?php echo site_url('css/estilo.css'); ?>" media="screen" />
