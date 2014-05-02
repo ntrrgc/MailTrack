@@ -35,7 +35,7 @@ if($error > 0){	?>
 		</tr>
 		<tr style="font-size:16px; font-weight:bold;">
 		<td colspan><center>
-		<?php echo htmlentities(wordwrap($mensaje->mfrom, 33, "<br />",true)); ?>
+		<?php echo htmlentities($mensaje->mfrom); ?>
                 </center></td>
                 <td>&nbsp;</td>
 		<td><center>Mensaje</center></td>
