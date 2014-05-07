@@ -210,17 +210,17 @@ while (<IN>) {
 		my $to = $4;
 		my $redir_text = $5;
 		my $alias_email = "";
-		my $status = $6;
+		my $status_text = $6;
 		my $description = "- Postfix informó del siguiente estado: $7 ($8)";
 		
 		my $aditional_info = "";
 
-		$status = $ENTREGADO_LOCAL;
+		my $status_code = $ENTREGADO_LOCAL;
 		# Check if a mail alias is in use
 		if($redir_text =~ / orig_to=<(.+?)>/){
 			$alias_email = $to;
 			$to = $1;
-			$status = $ENTREGADO_REDIRECCION;
+			$status_code = $ENTREGADO_REDIRECCION;
 			$aditional_info = "- Postfix/smtp informó: El destinatario utiliza una redirección desde la cuenta <i>".
                                           encode_entities($to)."</i> a la cuenta <i>".encode_entities($alias_email)."</i>.";
 			
@@ -229,9 +229,9 @@ while (<IN>) {
                         $sth = $dbh->prepare($query);
                         $sth->execute();
 		}
-                if($status ne 'sent')
+                if($status_text ne 'sent')
                 {
-                        $status = $ERROR_BUZONES;
+                        $status_code = $ERROR_BUZONES;
                 }
 
                 my $subject = get_label_info($label, "subject") or get_mid_info($mid, "subject") or "";
@@ -247,7 +247,7 @@ while (<IN>) {
                          "VALUES (?,?,?,?,?,?,?) ON DUPLICATE KEY UPDATE estado = ?;";
 
                 $sth = $dbh->prepare($query);
-                $sth->execute($mid, $from, $to, $alias_email, $subject_db, $status, $date, $status);
+                $sth->execute($mid, $from, $to, $alias_email, $subject_db, $status_code, $date, $status_code);
 
                 #Incrementamos el número de correos procesados
                 $query = "UPDATE estadisticas SET procesados = procesados + 1;";
@@ -258,10 +258,10 @@ while (<IN>) {
 		$query = "INSERT IGNORE INTO historial (message_id,estado,hto,fecha,maquina,descripcion,adicional) ".
                          "VALUES (?,?,?,?,?,?,?);";
 		$sth = $dbh->prepare($query);
-		$sth->execute($mid, $status, $to, $date, $machine, $description, $aditional_info);
+		$sth->execute($mid, $status_code, $to, $date, $machine, $description, $aditional_info);
 
 		#Incrementamos el numero de correos para dominios propios si el estado fue entregado local
-		if ($status eq $ENTREGADO_LOCAL)
+		if ($status_code == $ENTREGADO_LOCAL)
 		{
 			#Incrementamos el número de correos redirigidos a alias o dom. virtuales
                         my $query = "UPDATE estadisticas SET interno = interno + 1;";
