@@ -122,7 +122,7 @@ sub get_mid_info {
         my ($mid, $field) = @_;
 
         my $sth = $sth_store_get{"mid"}->{$field} or die "Unknown field: $field";
-        $sth->execute($label);
+        $sth->execute($mid);
 
         my $value;
         if ($sth->rows) {
