@@ -1,7 +1,7 @@
 <fieldset style="width: 820px; margin:auto;">
 	<legend>Datos de la búsqueda realizada (<?php echo number_format($num_rows); ?> resultados)</legend>
 
-	<p>Mostrando todos los mensajes accesibles por <?php echo $this->session->userdata('uid'); ?> que cumplen las siguientes condiciones de filtrado:</p>
+	<p>Mostrando todos los mensajes accesibles por <?php echo $this->session->userdata('identidad'); ?> que cumplen las siguientes condiciones de filtrado:</p>
 		<?php 
 			$query = $this->session->userdata('where_consulta');
 			$path = "<img src='".site_url('img/buttons')."/";

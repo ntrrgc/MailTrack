@@ -234,7 +234,7 @@ class Accesos extends CI_Controller {
                         # Si el usuario no es administrador sólo podrá ver sus accesos.
                         # Aprovechando esto, mejor mostramos su alias, si tiene, en vez de su nombre
                         # de usuario canónico.
-                        $nombre_usuario = $this->session->userdata('alias') or $usuario;
+                        $nombre_usuario = $this->session->userdata('identidad');
                 } else {
                         $nombre_usuario = $usuario;
                 }
