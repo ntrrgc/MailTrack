@@ -31,8 +31,6 @@ function clear_flags {
         rm -f "$FLAG" "$FLAG_BORRADO"
 }
 
-trap clear_flags EXIT
-
 if [ -f $FLAG ]; then
 	#El bloqueo esta activo por otra ejecución concurrente de indexado
 	exit
@@ -42,6 +40,8 @@ else
 	        #El bloqueo esta activo por otra ejecución concurrente de borrado
         	exit
 	fi
+
+        trap clear_flags EXIT
 
 	#Creamos el flag de bloqueo
 	touch $FLAG
