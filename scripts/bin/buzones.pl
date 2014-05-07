@@ -234,7 +234,7 @@ while (<IN>) {
                         $status_code = $ERROR_BUZONES;
                 }
 
-                my $subject = get_label_info($label, "subject") or get_mid_info($mid, "subject") or "";
+                my $subject = get_label_info($label, "subject") || get_mid_info($mid, "subject") || "";
 
                 my $subject_db;
                 if ($subject =~ /\S/) {
