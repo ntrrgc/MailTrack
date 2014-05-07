@@ -41,7 +41,7 @@ class Controlacceso {
                 phpCAS::forceAuthentication();
 
                 // Si el usuario se ha logeado con una sesión nueva...
-                if ($this->CI->session->userdata('identidad') == FALSE) {
+                if ($this->CI->session->userdata('identidad') === FALSE) {
                         //incrementamos el número de visitas a la aplicación
                         $this->CI->db->query('UPDATE estadisticas SET visitas = visitas + 1;');
 
