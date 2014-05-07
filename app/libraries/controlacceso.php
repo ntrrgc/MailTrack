@@ -60,7 +60,6 @@ class Controlacceso {
                         'alias' => phpCAS::getUser(),
                         'mail' => $attrs['mail'],
                         'sexo' => "1",
-                        'nombre' => 'Senor Earrojo'
                 );
 
                 // Guardar sesión
