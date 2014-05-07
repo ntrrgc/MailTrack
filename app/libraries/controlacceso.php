@@ -55,7 +55,7 @@ class Controlacceso {
                 $attrs = phpCAS::getAttributes();
 
                 $data = array(
-                        'identidad' => $attrs['uid'],
+                        'identidad' => (phpCAS::getUser() ? phpCAS::getUser() : $attrs['uid']),
                         'uid' => $attrs['uid'],
                         'alias' => phpCAS::getUser(),
                         'mail' => $attrs['mail'],
