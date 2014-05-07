@@ -211,7 +211,7 @@ while (<IN>) {
 		my $redir_text = $5;
 		my $alias_email = "";
 		my $status_text = $6;
-		my $description = "- Postfix informó del siguiente estado: $7 ($8)";
+		my $description = "- Postfix informó del siguiente estado: $status_text ($7)";
 		
 		my $aditional_info = "";
 
