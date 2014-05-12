@@ -4,7 +4,7 @@
 
 	<label>Cargar fecha</label>
 	<input type="text" name="fecha1" id="fecha1" size="5" value="Cualquier fecha" readonly="readonly"/>
-	<a href="#" id="f_btn1"><img src="http://seguimiento.us.es/img/buttons/calendar.png" title="elegir" class="left" /></a><input type="button" value="OK"/><br />
+	<a href="#" id="f_btn1"><img src="/img/buttons/calendar.png" title="elegir" class="left" /></a><input type="button" value="OK"/><br />
 	<br/>
 
     <script type="text/javascript">//<![CDATA[
