@@ -39,7 +39,7 @@ our $dbh = DBI->connect($connectionInfo,$userid,$passwd, {mysql_enable_utf8=>1})
 #  - mid
 #  - from
 #  - subject
-#  - expires_on (timestamp)
+#  - expires_in (timestamp)
 # The objects are removed once processing for that label has ended or at the
 # end of the script if they are old enough (1 hour).
 our %label_info = ();
@@ -49,11 +49,11 @@ label_info_store (
         `mid` VARCHAR(255),
         `from` VARCHAR(255),
         `subject` VARCHAR(255),
-        `expires_on` INTEGER);");
+        `expires_in` INTEGER);");
 
 # mid_info stores some information associated with message-id's:
 #  - subject
-#  - expires_on (timestamp)
+#  - expires_in (timestamp)
 # The objects are removed only when they reach the expiration time (24 hours).
 # This object allows us to retrieve the subject for lists' messages, which
 # appears only once, when the mail is received in the lists machine, but not
@@ -62,7 +62,7 @@ $dbh->do("CREATE TABLE IF NOT EXISTS
 mid_info_store (
         `mid` VARCHAR(255) PRIMARY KEY,
         `subject` VARCHAR(255),
-        `expires_on` INTEGER);");
+        `expires_in` INTEGER);");
 
 our %sth_store_get = ();
 our %sth_store_set = ();
@@ -79,10 +79,10 @@ while ((my $index, my $fields) = each(%fields_by_index)) {
                         WHERE `$index` = ?");
                 $sth_store_set{$index}->{$field} = $dbh->prepare("
                         INSERT INTO $table
-                        (`$index`, `$field`, expires_on)
+                        (`$index`, `$field`, expires_in)
                         VALUES (?, ?, ?)
                         ON DUPLICATE KEY
-                        UPDATE `$field` = ?, `expires_on` = ?;");
+                        UPDATE `$field` = ?, `expires_in` = ?;");
         }
 }
 
@@ -103,10 +103,10 @@ sub get_label_info {
 }
 sub set_label_info {
         my ($label, $field, $value) = @_;
-        my $expires_on = DateTime->now()->epoch() + 3600;
+        my $expires_in = DateTime->now()->epoch() + 3600;
 
         my $sth = $sth_store_set{"label"}->{$field} or die "Unknown field: $field";
-        $sth->execute($label, $value, $expires_on, $value, $expires_on);
+        $sth->execute($label, $value, $expires_in, $value, $expires_in);
 }
 sub remove_label_info {
         my ($label,) = @_;
@@ -135,20 +135,20 @@ sub get_mid_info {
 }
 sub set_mid_info {
         my ($mid, $field, $value) = @_;
-        my $expires_on = DateTime->now()->epoch() + 24 * 3600;
+        my $expires_in = DateTime->now()->epoch() + 24 * 3600;
 
         my $sth = $sth_store_set{"mid"}->{$field} or die "Unknown field: $field";
-        $sth->execute($mid, $value, $expires_on, $value, $expires_on);
+        $sth->execute($mid, $value, $expires_in, $value, $expires_in);
 }
 
 sub clean_storage {
         my $now = DateTime->now()->epoch();
 
         $dbh->prepare("DELETE FROM label_info_store
-                       WHERE `expires_on` < ?")->execute($now);
+                       WHERE `expires_in` < ?")->execute($now);
 
         $dbh->prepare("DELETE FROM mid_info_store
-                      WHERE `expires_on` < ?")->execute($now);
+                      WHERE `expires_in` < ?")->execute($now);
 }
 
 open(IN,"$PATH/log/temp") or die("No puedo abrir el fichero temp!\n");
