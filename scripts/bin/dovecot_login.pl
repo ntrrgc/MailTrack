@@ -33,7 +33,7 @@ while (<IN>) {
 
                 $insert_accesos->execute($usuario, $ip, $tipo, $protocolo, $timestamp, $estado, $timestamp);
                 $update_accesos->execute($num_accesos, $usuario, $tipo, $protocolo, $estado);
-        } elsif ($_ =~ /(\S+) \S+ dovecot: (pop3|imap)-login: Disconnected \(auth failed, (\d+) attempts in \d+ secs\): user=<(.+?)>, .*, rip=(.+?), /) {
+        } elsif ($_ =~ /(\S+) \S+ dovecot: (pop3|imap)-login: Disconnected \(auth failed, (\d+) attempts.*\): user=<(.+?)>, .*, rip=(.+?), /) {
                 my ($fecha, $protocolo, $num_accesos, $usuario, $ip) = ($1, $2, $3, $4, $5);
                 my $tipo = "Correo USAL";
                 my $timestamp = DateTime::Format::ISO8601->parse_datetime($fecha)->epoch();
