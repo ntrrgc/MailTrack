@@ -36,6 +36,7 @@ SELECT auth.id_auth AS id_auth,
 FROM authentications auth
 JOIN accesses ON auth.session_hash = accesses.session_hash
 WHERE id_auth > ?
+AND success = 1
 ORDER BY id_auth ASC;
 ");
 

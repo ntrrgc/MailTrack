@@ -57,7 +57,9 @@
 						<tr>
 <?php $img = "<img src='".site_url('img/'.$sentido.'.png')."' />"; ?>
 <?php if($campo == "estado") { $cad = $img; $order = $contrario;}else{ $cad = ""; $order = $sentido; }?>
+<?php /*
 <th width="40px"><a href="<?php echo $base; ?>/estado/<?php echo $order;?>"><?php echo $cad;?> Estado</a></th>
+*/ ?>
 
 <?php if($this->controlacceso->permisoAdministracion()) { ?>
 <?php if($campo == "usuario") { $cad = $img; $order = $contrario;}else{ $cad = ""; $order = $sentido; }?>
@@ -100,7 +102,9 @@
 
 				?>
                                                 <tr <?php echo $tr; ?>>
+<?php /*
                                                         <td><a href="<?php echo site_url(''); ?>accesos/ver/<?php echo $row->aid;?>"><center><img src="<?php echo site_url("img/seg/32x32/$img.png"); ?>" border="0" width="24" height="24" title="Ver detalle"/></center></a></td>
+ */ ?>
                                                         <?php if($this->controlacceso->permisoAdministracion()) { ?>
 	                                                <td><?php echo htmlentities($row->usuario);?></td> 
                                                         <?php } ?>

@@ -48,7 +48,7 @@ class Accesos extends CI_Controller {
 		$config['cur_tag_open'] = '<div id="paginacion_actual">';
 		$config['cur_tag_close'] = '</div>';
 
-		$where = "(usuario = '$cuenta' OR usuario = '$uid')";
+		$where = "(usuario = '$cuenta' OR usuario = '$uid') AND estado = 0";
 
 		if($filtro == "idusal"){
 			$config['base_url'] = site_url("accesos/lista/idusal");
