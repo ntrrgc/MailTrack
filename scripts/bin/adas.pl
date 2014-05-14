@@ -17,7 +17,7 @@ if (open(FILE, "$PATH/log/last_id_auth")) {
         $last_id_auth = int(join("", <FILE>));
 } else {
         # El archivo no existe
-        $last_id_auth = $adas_min_id_auth; # from config.pl
+        $last_id_auth = $adas_first_id_auth; # from config.pl
 }
 close FILE;
 print("Last ".$last_id_auth."\n");
@@ -65,7 +65,7 @@ while (@acceso = $adas_sth->fetchrow_array) {
         if ($resource =~ /^https?:\/\/([^\/]+)/) {
                 $tipo = $1;
         } else {
-                $tipo = "desconocido";
+                $tipo = "idUsal";
         }
         $insert_accesos->execute($id_user, $ip_client, $tipo, $protocolo, $timestamp, $estado, $timestamp);
 
