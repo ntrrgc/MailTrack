@@ -10,7 +10,6 @@ my $mailtrack_dbh = DBI->connect($connectionInfo,$userid,$passwd, {mysql_enable_
         or die "Can't connect to the database.\n";
 
 # Sólo se procesarán intentos de autenticación con id superiores a este.
-my $min_id_auth = 9904566;
 $PATH = "/srv/mailtrack/scripts";
 
 # Obtiene el último id de autenticación del que mailtrack tiene información
@@ -18,7 +17,7 @@ if (open(FILE, "$PATH/log/last_id_auth")) {
         $last_id_auth = int(join("", <FILE>));
 } else {
         # El archivo no existe
-        $last_id_auth = $min_id_auth;
+        $last_id_auth = $adas_min_id_auth; # from config.pl
 }
 close FILE;
 print("Last ".$last_id_auth."\n");
