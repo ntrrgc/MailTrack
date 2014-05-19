@@ -6,6 +6,7 @@
 	<meta name="description" content="Seguimiento de correo electrónico. Universidad de Salamanca."/>
 	<meta name="keywords" content="Seguimiento, Universidad, Salamanca" />
 	<meta name="author" content="Víctor Téllez - vtellez@us.es Servicio de Informática y Comunicaciones" />
+        <link href='https://fonts.googleapis.com/css?family=Josefin+Sans:400' rel='stylesheet' type='text/css'>
         <link href='https://fonts.googleapis.com/css?family=Josefin+Sans+Std+Light' rel='stylesheet' type='text/css'>
 	<link rel="stylesheet" type="text/css" href="<?php echo site_url('css/estilo.css'); ?>" media="screen" />
 
@@ -58,14 +59,14 @@ if (isset($js_adicionales)) {
 <?php if($controlador == "inicio"){ echo "<li class='current_page_item current_page".$parent."'>";} else{ echo "<li>";  } ?>
 <a href="<?php echo site_url('inicio'); ?>"><img src="<?php echo site_url('img/menu/home.png'); ?>"/>Inicio</a></li>
 
+<?php if($controlador == "accesos"){ echo "<li class='current_page_item current_page".$parent."'>";} else{ echo "<li>";  } ?><a href="<?php echo site_url('accesos/lista/'); ?>"><img src="<?php echo site_url('img/menu/accesos.png'); ?>"/>Accesos</a></li>
+
 <?php if($controlador == "mensajes"){ echo "<li class='current_page_item current_page".$parent."'>";} else{ echo "<li>";  } ?>
 <a href="<?php echo site_url('mensajes/lista/todos'); ?>"><img src="<?php echo site_url('img/menu/Mail.png'); ?>" style="margin-top:-5px; margin-right:4px; "/>Mensajes</a></li>
 
-<?php if($controlador == "accesos"){ echo "<li class='current_page_item current_page".$parent."'>";} else{ echo "<li>";  } ?><a href="<?php echo site_url('accesos/lista/'); ?>"><img src="<?php echo site_url('img/menu/accesos.png'); ?>"/>Accesos</a></li>
-
 <?php if($controlador == "buscador"){ echo "<li class='current_page_item current_page".$parent."'>";} else{ echo "<li>";  } ?><a href="<?php echo site_url('buscador'); ?>"><img src="<?php echo site_url('img/menu/search.png'); ?>"/>Buscador</a></li>
 
-<?php if($controlador == "ayuda"){ echo "<li class='current_page_item current_page".$parent."'>";} else{ echo "<li>";  } ?><a href="<?php echo site_url('ayuda'); ?>"><img src="<?php echo site_url('img/menu/help.png'); ?>"  style="margin-top:0px;"/>Ayuda</a></li>
+<?php if($controlador == "ayuda"){ echo "<li class='current_page_item current_page".$parent."'>";} else{ echo "<li>";  } ?><a href="<?php echo site_url('ayuda'); ?>"><img src="<?php echo site_url('img/menu/help.png'); ?>"/>Ayuda</a></li>
 
 <?php  if ($this->controlacceso->permisoAdministracion()){
 	if($controlador == "admin"){ echo "<li class='current_page_item current_page".$parent."'>";} else{ echo "<li>";  } ?><a href="<?php echo site_url('admin/task'); ?>"><img src="<?php echo site_url('img/menu/admin.png'); ?>"/>Admin</a></li>

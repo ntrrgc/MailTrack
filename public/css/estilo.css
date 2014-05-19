@@ -46,13 +46,6 @@ body {
 ------------------------------------------------------------------- */
 /* Font */
 
-h2{
-	text-shadow: 4px 4px 4px #aaa;
-}
-
-
-/* Headings */
-
 h1,h2,h3,h4,h5,h6 {
 	color: #444;
 	font-weight: normal;
@@ -62,18 +55,17 @@ h1,h2,h3,h4,h5,h6 {
 
 h3 a{
 	text-decoration:none;
-	color: #555;
+	color: rgb(180, 64, 64);
 }
 
 
 h1 {font-size: 2.6em;}
-h2 {font-size: 2.5em; font-family: 'Josefin Sans Std Light', serif; color:#555;}
+h2 {font-size: 2.2em; font-family: "Trebuchet MS", sans-serif; color:#555;}
 h3 {font-size: 1.40em;}
 #main h3{
 	font-size: 2.0em; 
 	font-family: 'Josefin Sans Std Light', serif;
 	color:#555;
-	text-shadow: 3px 3px 3px #aaa;
 	padding:3px;
 	}
 h4 {font-size: 1.25em;}
@@ -91,8 +83,8 @@ p span a{ color:#246;}
 
 a:focus,a:hover {color: #002;}
 a {
-	color: #246;
-	text-decoration: underline;
+	color: #535353;
+	text-decoration: none;
 }
 
 blockquote {margin: 1.2em; line-height: 1.4em;}
@@ -135,8 +127,8 @@ table.data-table {
 	margin-bottom: 2em;
 	width: 100%;
 
-        -webkit-box-shadow: rgba(0, 0, 0, 0.1) 0 4px 5px;
-        -moz-box-shadow: rgba(0, 0, 0, 0.1) 0 4px 5px;
+        
+        
 }
 table.data-table th {
 	background: #EEE;
@@ -216,17 +208,18 @@ fieldset.informe{
 fieldset {
 	border-radius: 10px;
         -moz-border-radius: 10px;
-        -webkit-border-radius: 10px;
-        box-shadow: rgba(0, 0, 0, 0.1) 0 2px 5px; 
-        -webkit-box-shadow: rgba(0, 0, 0, 0.1) 0 3px 5px; 
-        -moz-box-shadow: rgba(0, 0, 0, 0.1) 0 3px 5px; 
+        
+	-webkit-border-radius: 10px;
+         
+         
+         
 }
 fieldset {padding: 1.4em; margin: 0 0 1.5em 0; border: 1px solid #DDD; background: #F6F6F6;}
-fieldset a{text-decoration:none; color: #951}
+fieldset a{text-decoration:none; color: #525252;}
 fieldset div.nivel0 a{font-size:15px; font-weight: nonr; color: #555;}	
 fieldset div.separa-nivel{height: 15px;}
 fieldset div.nivel1{margin-bottom: 0px; margin-left: 40px; font-size:13px;}
-legend {font-weight: bold; font-size: 1.3em; text-shadow: rgba(0, 0, 0, 0.2) 0 4px 5px; }
+legend {font-weight: bold; font-size: 1.3em;  padding: 0 6px;}
 textarea {overflow: auto;}
 
 label {font-size: 14px; height: 20px;
@@ -288,9 +281,9 @@ input[type=text]:focus, textarea:focus, select:focus{
     	color: #444;
         border-radius: 10px;
         -webkit-border-radius: 10px;
-        box-shadow: rgba(0, 0, 0, 0.1) 0 2px 5px;
-        -webkit-box-shadow: rgba(0, 0, 0, 0.1) 0 3px 5px;
-        box-shadow: rgba(0, 0, 0, 0.1) 0 3px 5px;
+        
+        
+        
 }
 
 .buttons-fieldset{
@@ -347,19 +340,13 @@ img.bordered,img.alignleft,img.alignright,img.aligncenter {
 	border-radius: 10px;
         -moz-border-radius: 10px;
         -webkit-border-radius: 10px;
-        box-shadow: rgba(0, 0, 0, 0.1) 0 2px 5px;
-        -webkit-box-shadow: rgba(0, 0, 0, 0.1) 0 3px 5px;
-        -moz-box-shadow: rgba(0, 0, 0, 0.1) 0 3px 5px;
 }
 
 img.bordered:hover {
         border: 1px solid #ccc;
         border-radius: 10px;
         -moz-border-radius: 10px;
-        -webkit-border-radius: 10px;
-        box-shadow: rgba(0, 0, 0, 0.1) 0 4px 10px;
-        -webkit-box-shadow: rgba(0, 0, 0, 0.1) 0 4px 10px;
-        -moz-box-shadow: rgba(0, 0, 0, 0.1) 0 4px 10px;
+	-webkit-border-radius: 10px;
 }
 
 img.alignleft, img.left {margin: 0 1.5em 1em 0;}
@@ -455,12 +442,12 @@ ul.nice-list span {color: #666;}
 	border-top: 1px solid #FFF;
 	padding: 16px 20px 0;
 }
-.box a {color: #951;}
+.box a {color: #AC4242;}
 .box a:hover {color: #310;}
 .box-title {	
 	color: #665;
 	font: normal 1.6em sans-serif;
-        text-shadow: rgba(0, 0, 0, 0.2) 0 5px 5px;  
+          
 }
 .box-content {padding: 8px 0;}
 
@@ -568,24 +555,24 @@ ul.tabbed li {
 ul.tabbed a {text-decoration: none;}
 
 #navigation-wrapper {background: url('../img/navigation.gif') repeat-x left top;}
-#navigation-wrapper-2 {background: url('../img/navigation-wrapper-2.gif') no-repeat center top;}
+#navigation-wrapper-2 {background: rgb(100, 100, 100);}
 #navigation {
-	background: url('../img/navigation.gif') repeat-x left top;
+	/* background: url('../img/navigation.gif') repeat-x left top; */
 	min-height: 46px;
 	padding: 0 8px;
 }
 
 #navigation a {
-	color: #EAE6DD;
+	color: #DBD7CC;
 	display: block;
-	font-weight: bold;
+	/* font-weight: bold; */
 	font-size: 1.2em;
 	padding: 12px 12px 12px;
 }
 #navigation a:hover {color: #FFF; }
 #navigation li.current_page_item a, #navigation li.current_page_parent a {color: #FFE;}
 #navigation li.current_page_item a {background: url('../img/navigation-arrow-2.gif') no-repeat center bottom;}
-#navigation li.current_page_parent a {background: url('../img/navigation-arrow.gif') no-repeat center bottom;}
+#navigation li.current_page_parent a {background: url('../img/navigation-arrow-2.gif') no-repeat center bottom;}
 
 #navigation li img{
 	float: left;
@@ -597,7 +584,7 @@ ul.tabbed a {text-decoration: none;}
 /* Subnav */
 
 #subnav-wrapper {background: #E9E9E9 url('../img/subnav-wrapper.gif') repeat-x left bottom;}
-#subnav-wrapper-2 {background: url('../img/subnav-wrapper-2.gif') no-repeat center bottom;}
+#subnav-wrapper-2 {background: rgb(218, 218, 218);}
 #subnav {padding: 0 8px;}
 #subnav img{ width:24px; height: 24px; margin-top: -6px; margin-right: 3px; float:left; }
 
@@ -614,7 +601,7 @@ ul.tabbed a {text-decoration: none;}
 /* Content */
 
 .content {font-size: 1.1em;}
-#content-wrapper {background: #F6F6F6 url('../img/content-wrapper.gif') repeat-y center top; }
+#content-wrapper {background: #E9E9E9; }
 .content#content-two-columns {background: url('../img/content-two-columns.gif') repeat-y left top;}
 
 
@@ -651,9 +638,9 @@ ul.tabbed a {text-decoration: none;}
 	background: #808080;
 	font-size: 1.1em;
 	padding: 12px 16px;
-        box-shadow: rgba(0, 0, 0, 0.1) 0 2px 5px;
-        -webkit-box-shadow: rgba(0, 0, 0, 0.1) 0 3px 5px;
-        -moz-box-shadow: rgba(0, 0, 0, 0.1) 0 3px 5px;
+        
+        
+        
 }
 #footer a {
 	color: #DDD;
@@ -751,9 +738,9 @@ Paginación
 	-moz-border-radius:3px;
 	border-radius:3px;
 	-webkit-border-radius:3px;
-        -webkit-box-shadow: rgba(0, 0, 0, 0.1) 0 4px 5px;
-        -moz-box-shadow: rgba(0, 0, 0, 0.1) 0 4px 5px;
-        box-shadow: rgba(0, 0, 0, 0.1) 0 4px 5px;
+        
+        
+        
 }
 #paginacion a:hover {
     	background-color:#EDEDED;
@@ -766,8 +753,7 @@ Paginación
 	padding-top: 0px;
 	padding-bottom: 0px;
 	margin-top:10px;
-	font-size: 20px;
-	text-shadow: 2px 2px 2px #aaa;
+	font-size: 16px;
 }
 
 
@@ -781,16 +767,16 @@ Paginación
         }
 
 #faq li{
-        font-size: 1.8em;
-        font-family: 'Josefin Sans Std Light', serif; 
+        font-size: 1.5em;
+        font-family: 'Trebuchet MS', serif; 
         color:#333;
-        list-style: square;
-        text-shadow: 3px 3px 3px #aaa;
+        list-style: none;
         padding:6px;
         padding-top: 30px;
         margin-bottom:4px;
-	margin-left: 20px;
-        }
+	
+        margin-left: 0px;
+}
 
 #faq p{
         font-size: 1.0em;
@@ -800,3 +786,14 @@ Paginación
 #faq img{
         }
 
+
+#faq {
+}
+
+.app-title {
+    color: rgb(180, 64, 64);
+}
+
+#content-wrapper .center-wrapper {
+    background: white;
+}
