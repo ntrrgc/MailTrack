@@ -46,13 +46,9 @@
 ?>
 
 
-<div style="float:left; font-size:14px;">Haga clic en el icono de estado para la vista detallada del acceso.</div>
-
 <?php echo $pagination->create_links(); ?>
 
-<br/>
-<br/>
-					<table class="data-table" class="tablesorter" style="white-space: nowrap; table-layout:fixed; width:100%;" >
+					<table class="data-table" class="tablesorter" style="white-space: nowrap; table-layout:fixed; width:100%; margin-top: 10px" >
 					    <thead>
 						<tr>
 <?php $img = "<img src='".site_url('img/'.$sentido.'.png')."' />"; ?>
