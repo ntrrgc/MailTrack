@@ -23,7 +23,7 @@
 # */
 
 RUTA="/srv/mailtrack/scripts"
-RUTA_LOG="/tmp/seglog"
+RUTA_LOG="/var/local/lib/mailtrack/logs"
 LOCK_FILE="/run/mailtrack/seguimiento_flag_lock"
 
 ( flock -n 9 || exit
