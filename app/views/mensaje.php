@@ -41,7 +41,7 @@ if($error > 0){	?>
 		<td><center>Mensaje</center></td>
                 <td>&nbsp;</td>
 		<td><center>
-		<?php $var = ($mensaje->redirect != '') ? "$mensaje->mto >>>> $mensaje->redirect" : "$mensaje->mto";
+		<?php $var = $mensaje->mto;
 	echo htmlentities(wordwrap($var, 53, "<br />",true));
 	?></center></td>
 		</tr>
