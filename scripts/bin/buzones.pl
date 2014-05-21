@@ -235,6 +235,9 @@ while (<IN>) {
                 }
 
                 my $subject = get_label_info($label, "subject") || get_mid_info($mid, "subject") || "";
+                if ($subject =~ /^\[SPAM\]/ && $status_code != $ERROR_BUZONES) {
+                        $status_code = $SPAM_ENTREGADO_LOCAL;
+                }
 
                 my $subject_db;
                 if ($subject =~ /\S/) {
