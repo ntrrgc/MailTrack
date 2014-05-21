@@ -240,40 +240,6 @@
 <div class="separa-nivel">&nbsp;</div>
 
 
-<div class="nivel0">
-        <a href="#<?php echo "$cont"; ?>"><?php echo "$cont"; ?>. Indicadores y estadísticas</a>
-</div>
-         <div class="nivel1">
-                <?php echo "$cont.$subcont"; ?>.
-                <a href="#<?php echo "$cont.$subcont"; ?>">Organización de los indicadores</a>
-                <?php $subcont++; ?>
-        </div>
-         <div class="nivel1">
-                <?php echo "$cont.$subcont"; ?>.
-                <a href="#<?php echo "$cont.$subcont"; ?>">Indicadores de volumen</a>
-                <?php $subcont++; ?>
-        </div>
-         <div class="nivel1">
-                <?php echo "$cont.$subcont"; ?>.
-                <a href="#<?php echo "$cont.$subcont"; ?>">Indicadores de correo spam/ham</a>
-                <?php $subcont++; ?>
-        </div>
-         <div class="nivel1">
-                <?php echo "$cont.$subcont"; ?>.
-                <a href="#<?php echo "$cont.$subcont"; ?>">Indicadores de correos entregados</a>
-                <?php $subcont++; ?>
-        </div>
-         <div class="nivel1">
-                <?php echo "$cont.$subcont"; ?>.
-                <a href="#<?php echo "$cont.$subcont"; ?>">Indicadores de correos detenidos</a>
-                <?php $subcont++; ?>
-        </div>
-
-
-
-
-<?php $cont++; $subcont = 1; ?>
-<div class="separa-nivel">&nbsp;</div>
 
 
 
@@ -322,16 +288,15 @@
 	<a name="<?php echo "$cont.$subcont"; ?>"></a><li>
 	<a href="#"><?php echo "$cont.$subcont. "; ?>¿Para qué sirve esta aplicación web?</a></li>
 	<?php $subcont++; ?>
-<p>Esta aplicación web, en adelante la llamaremos simplemente "Seguimiento", permite a los usuarios de la Universidad de Sevilla, comprobar el estado de sus mensajes de correo electrónico (tanto entrantes como salientes)  que han pasado a través de las estafetas de correo corpotativas de la Universidad de Sevilla.</p>
+<p>Esta aplicación web, en adelante la llamaremos simplemente "Seguimiento", permite a los usuarios de la Universidad de Salamanca, comprobar el estado de sus mensajes de correo electrónico (tanto entrantes como salientes)  que han pasado a través de las estafetas de correo corporativas de la Universidad de Salamanca.</p>
 
 <p>Su principal objetivo es brindar a los usuarios una herramienta sencilla e intuitiva que permita dar una idea del estado actual (e historial) de cada correo de forma clara. Así, es sencillo averiguar un mensaje ha llegado a su destino o por qué se ha detenido un mensaje que estábamos esperando.</p>
 
-<p>Además, Seguimiento permite a los administradores de correo de la Universidad de Sevilla, realizar tareas de administración así como obtener diversos indicadores del sistema de correo.</p>
 
         <a name="<?php echo "$cont.$subcont"; ?>"></a><li>
         <a href="#"><?php echo "$cont.$subcont. "; ?>¿Quién puede utilizar esta aplicación web?</a></li>
 	<?php $subcont++; ?>
-<p>La aplicación web Seguimiento podrá ser utilizada por toda persona que cuente con una dirección de correo activa de la universidad de Sevilla (esto es, una cuenta del dominio @usal.es).</p>
+<p>La aplicación web Seguimiento podrá ser utilizada por toda persona que cuente con una dirección de correo activa de la Universidad de Salamanca (esto es, una cuenta del dominio @usal.es).</p>
 <p>Cada persona tendrá derecho a consultar todos sus mensajes, esto es, aquellos mensajes enviados o recibidos que involucren a su dirección de correo corporativa.</p> 
 
         <a name="<?php echo "$cont.$subcont"; ?>"></a><li>
@@ -344,7 +309,7 @@
         <a name="<?php echo "$cont.$subcont"; ?>"></a><li>
         <a href="#"><?php echo "$cont.$subcont. "; ?>¿Durante cuánto tiempo se guardan mis mensajes?</a></li>
         <?php $subcont++; ?>
-<p>Si ha usado anteriormente la aplicación de seguimiento habrá notado que no se muestran todos sus mensajes, sino únicamente los más recientes. Ésto es así debido a que la aplicación elimina automáticamente todos los mensajes con fecha anterior a 10 días.</p>
+<p>Si ha usado anteriormente la aplicación de seguimiento habrá notado que no se muestran todos sus mensajes, sino únicamente los más recientes. Ésto es así debido a que la aplicación elimina automáticamente todos los mensajes con fecha anterior a 30 días.</p>
 
 <p>Si desea conocer el estado de un correo anterior a ese período de tiempo, puede ponerse en contacto con nosotros, escribiéndonos un correo electrónico a <a href="mailto:servicios.red@usal.es">servicios.red@usal.es</a>.
 
@@ -352,7 +317,7 @@
         <a name="<?php echo "$cont.$subcont"; ?>"></a><li>
         <a href="#"><?php echo "$cont.$subcont. "; ?>No encuentro el mensaje que buscaba</a></li>
         <?php $subcont++; ?>
-<p>Si desea conocer el estado de un mensaje y este no aparece en su listado de mensajes puede ser debido a que el mensaje tiene una fecha anterior a 10 días y ha sido eliminado de nuestra base de datos.</p>
+<p>Si desea conocer el estado de un mensaje y este no aparece en su listado de mensajes puede ser debido a que el mensaje tiene una fecha anterior al último mes y ha sido eliminado de nuestra base de datos.</p>
 <p>Si por el contrario el mensaje que busca es más reciente y aun así no aparece en "Mis mensajes", puede ponerse en contacto con nosotros, escribiéndonos un correo electrónico a <a href="mailto:servicios.red@usal.es">servicios.red@usal.es</a> e intentaremos determinar la causa del problema.</p>
 
 
@@ -388,9 +353,8 @@
 <p><img src="<?php echo site_url('img/menu/Mail.png');?>" /> <b>Mensajes</b>: Este enlace le llevará a su lista de mensajes. Puede consultar una información detallada de esta sección <a href="#3">aqui</a>.</p>
 <p><img src="<?php echo site_url('img/menu/accesos.png');?>" /> <b>Accesos</b>: Este enlace le llevará a su lista de accesos a su buzón de correo. Puede consultar una información detallada de esta sección <a href="#7">aqui</a>.</p>
 <p><img src="<?php echo site_url('img/menu/search.png');?>" /> <b>Buscador</b>: Este enlace le llevará al buscador de mensajes. Puede consultar una información detallada de esta sección <a href="#4">aqui</a>.</p>
-<p><img src="<?php echo site_url('img/menu/pie_chart.png');?>" /> <b>Indicadores</b>: Este enlace le llevará al conjunto de estadísticas e indicadores de correo de la Universidad de Sevilla. Puede consultar una información detallada de esta sección <a href="#8">aqui</a>.</p>
 <p><img src="<?php echo site_url('img/menu/help.png');?>" /> <b>Ayuda</b>: Enlace a la página de preguntas frecuentes y ayuda para el usuario.</p>
-<p><img src="<?php echo site_url('img/menu/logout.png');?>" /> <b>Cierre de sesión</b>: Verá este icono junto a su nombre de usuario virtual de la Universidad de Sevilla (UVUS). Este enlace le llevará a la pantalla de logout, donde se le pedirá confirmación para cerrar su sesión de usuario.</p>
+<p><img src="<?php echo site_url('img/menu/logout.png');?>" /> <b>Cierre de sesión</b>Este enlace le llevará a la pantalla de logout, donde se le pedirá confirmación para cerrar su sesión de usuario.</p>
 
 
 
@@ -407,7 +371,7 @@
 <p>Para ayudarle a localizar rápidamente sus mensajes, hemos clasificado los mensajes, tal y como lo haría un cliente de correo, es decir, agrupándolos en los siguientes grupos (accesibles desde el menú superior):</p>
 <p><center><img src="<?php echo site_url('img/faq/listmenu.png');?>" /></center></p>
 <p>Veamos en detalle cada conjunto:</p>
-<p><img src="<?php echo site_url('img/menu/all.png');?>" /> <b>Todos mis mensajes</b>: Aqui están todos los mensajes asociados a su cuenta (su dirección de correo coincide con la del emisor o la del destinatario). Recordar que en el sistema solo se guardan mensajes con una fecha no anterior a 10 días.</p>
+<p><img src="<?php echo site_url('img/menu/all.png');?>" /> <b>Todos mis mensajes</b>: Aqui están todos los mensajes asociados a su cuenta (su dirección de correo coincide con la del emisor o la del destinatario). Recordar que en el sistema solo se guardan mensajes con una fecha no anterior a 30 días.</p>
 <p><img src="<?php echo site_url('img/menu/mail_receive.png');?>" /> <b>Mensajes recibidos</b>: Listado de todos los mensajes del sistema donde la dirección del destinatario coincide con su cuenta de correo.</p>
 <p><img src="<?php echo site_url('img/menu/mail_send.png');?>" /> <b>Mensajes enviados</b>: Listado de todos los mensajes del sistema donde la dirección del emisor coincide con su cuenta de correo.</p>
         <?php $subcont++; ?>
@@ -483,7 +447,7 @@
         <?php $subcont++; ?>
 <p>En ciertos campos del formulario, en concreto: Emisor, Destinatario y Asunto, es posible utilizar el símbolo asterisco "*", como comodín.</p>
 <p>De tal manera que donde especifiquemos un *, se buscará una cadena donde dicho símbolo puede tomar cualquier valor.</p>
-<p>Asi, podemos hacer consultas más avanzadas, por ejemplo si quisieramos obtener todos los correos que hemos enviado a un usuarios de la Universidad de Sevilla, en el campo destinatario podemos especificar:<b>Destinatario: *@us.es</b>.</p>
+<p>Asi, podemos hacer consultas más avanzadas, por ejemplo si quisieramos obtener todos los correos que hemos enviado a un usuarios de la Universidad de Salamanca, en el campo destinatario podemos especificar:<b>Destinatario: *@usal.es</b>.</p>
 <p><center><img src="<?php echo site_url('img/faq/ejemplo.png');?>" /></center> </p>
 <p>Aprender a utilizar este tipo de consultas puede ofrecer grandes resultados, dado que al ser de forma fácil añade una gran funcionalidad al buscador.</p>
 
@@ -500,8 +464,7 @@
         <a href="#"><?php echo "$cont.$subcont. "; ?>¿Qué son estados de un mensaje?</a></li>
         <?php $subcont++; ?>
 <p>Un estado es la definición de la última situación conocida para el mensaje. Como idea general, podemos decir que un correo siempre se encuentra en uno de los siguientes estados:</p>
-<p><img src="<?php echo site_url("img/seg/32x32/valid.png"); ?>" /><b> ENTREGADO</b>: Este conjunto incluye todos aquellos mensajes que han llegado satisfactoriamente al destinatario. En el caso de tratarse de un destinatario propio de la Universidad de Sevilla (con dominio us.es), estos estados indicarán que se ha entregado correctamente al buzón del usuario. Por contra, en caso de que el destinatario fuese a un dominio ajeno a la Universidad (como por ejemplo gmail.com, yahoo.es o cualquier otro) estos estados indican que el mensaje fue entregado al servidor de correo remoto.</p>
-<p><img src="<?php echo site_url("img/seg/32x32/wait.png"); ?>" /><b> ENCOLADO</b>: Este conjunto incluye todos aquellos mensajes que la última vez que se consultó su estado aun no habían sido entregados al destinatario pero que siguen un curso normal dentro del flujo seguido por la infraestructura de estafetas de correo. Están pendientes de ser entregados al destinatario.</p>
+<p><img src="<?php echo site_url("img/seg/32x32/valid.png"); ?>" /><b> ENTREGADO</b>: Este conjunto incluye todos aquellos mensajes que han llegado satisfactoriamente al destinatario. En el caso de tratarse de un destinatario propio de la Universidad de Salamanca (con dominio usal.es), estos estados indicarán que se ha entregado correctamente al buzón del usuario. Por contra, en caso de que el destinatario fuese a un dominio ajeno a la Universidad (como por ejemplo gmail.com, yahoo.es o cualquier otro) estos estados indican que el mensaje fue entregado al servidor de correo remoto.</p>
 <p><img src="<?php echo site_url("img/seg/32x32/error.png"); ?>" /><b> DETENIDO</b>: Este conjunto incluye todos aquellos correos que NO han sido entregados al destinatario. Este estado puede alcanzarse por muchos motivos diferentes (por ejemplo, correos con un tamaño que excede el tamaño máximo permitido, correos con malware o virus, errores en la dirección del destinatario, etc etc).</p>
 
 
@@ -625,7 +588,7 @@
         <a name="<?php echo "$cont.$subcont"; ?>"></a><li>
         <a href="#"><?php echo "$cont.$subcont. "; ?>¿Qué es un acceso?</a></li>
         <?php $subcont++; ?>
-        <p>Un acceso representa una conexión contra los servidores de correo de la Universidad de Sevilla. En este caso, se clasifican atendiendo al tipo de protocolo que se usó para realizar dicha conexión. Distinguiéndose varios casos: Buzón web (que realmente es un caso de conexión IMAP/IMAPS), protocolo IMAP/IMAPS y protocolo POP/POPS.</p>
+        <p>Un acceso representa una conexión contra los servidores de correo de la Universidad de Salamanca. En este caso, se clasifican atendiendo al tipo de protocolo que se usó para realizar dicha conexión. Distinguiéndose varios casos: Buzón web (que realmente es un caso de conexión IMAP/IMAPS), protocolo IMAP/IMAPS y protocolo POP/POPS.</p>
 
         <a name="<?php echo "$cont.$subcont"; ?>"></a><li>
         <a href="#"><?php echo "$cont.$subcont. "; ?>Organización de los accesos</a></li>
@@ -634,114 +597,25 @@
 <p>Veamos en detalle cada conjunto:</p>
 
 <p><img src="<?php echo site_url('img/menu/globe_up.png');?>" /> <b>Todos mis accesos</b>: Aquí podrá ver un listado completo de todos sus accesos a su buzón de correo, independientemente del protocolo utilizado.</p>
-<p><img src="<?php echo site_url('img/menu/globe_up.png');?>" /> <b>Accesos desde buzón web</b>: Aquí podrá ver un listado de todos sus accesos a su buzón de correo, filtrándose únicamente aquellos accesos que se realizaron desde la página de buzonweb.us.es</p>
+<p><img src="<?php echo site_url('img/menu/globe_up.png');?>" /> <b>Accesos desde idUSAL</b>: Aquí podrá ver un listado de todos sus accesos a idUSAL.
 <p><img src="<?php echo site_url('img/menu/globe_up.png');?>" /> <b>Accesos vía IMAP</b>: Aquí podrá ver un listado de todos sus accesos a su buzón de correo, filtrándose únicamente aquellos accesos que se realizaron utilizando un protocolo IMAP o IMAPS.</p>
 <p><img src="<?php echo site_url('img/menu/globe_download.png');?>" /> <b>Accesos vía POP</b>: Aquí podrá ver un listado de todos sus accesos a su buzón de correo, filtrándose únicamente aquellos accesos que se realizaron utilizando un protocolo POP o POPS.</p>
 
         <a name="<?php echo "$cont.$subcont"; ?>"></a><li>
-        <a href="#"><?php echo "$cont.$subcont. "; ?>Posibles estados de un acceso</a></li>
+        <a href="#"><?php echo "$cont.$subcont. "; ?>Informe de los accesos</a></li>
         <?php $subcont++; ?>
-	<p>Un acceso puede alcanzar dos estados:</p>
-<p><img src="<?php echo site_url('img/seg/32x32/valid.png'); ?>"/> <b>Conexión correcta</b>: Este estado se alcanza cuando para realizar la conexión, se utilizaron correctamente los credenciales de usuario.</p>
-<p><img src="<?php echo site_url('img/seg/32x32/error.png'); ?>"/> <b>Conexión errónea</b>: Este estado se alcanza cuando se introdujo mal el usuario y/o la contraseña para acceder al servidor.</p>
-
-        <a name="<?php echo "$cont.$subcont"; ?>"></a><li>
-        <a href="#"><?php echo "$cont.$subcont. "; ?>Vista detallada de un acceso</a></li>
-        <?php $subcont++; ?>
-	<p>La vista detallada de un acceso nos muestra una serie de información adicional que desglosaremos a continuación:</p>
-	<p><center><img src="<?php echo site_url('img/faq/acceso.png');?>" /></center></p>
+<p>En la tabla todos mis acceso, puede encontrar toda la información de los accesos </p>
+<p><center><img src="<?php echo site_url('img/faq/accesoIdUSAL.png');?>" /></center></p>
 
 
+En este apartado podemos encontrar los accesos a los diferentes recursos a través de idUSAL. Los campos más importantes son: <br>
+<b>Tipo de acceso</b> : Que indicará el recurso, por ejemplo listas.usal.es o seguimiento.usal.es ...  <br>
+<b> Dirección IP </b> : Que indica la dirección IP desde la que se ha originado la conexión. <br>
+<b> Fecha del último acceso </b>: Que indica la fecha del último acceso al recurso.  
 
 
 
 <?php $cont++; $subcont = 1; ?>
-<h2>
-        <a name="<?php echo $cont; ?>"></a>
-        <?php echo $cont; ?>. Indicadores y estadísticas
-</h2>
-
-        <a name="<?php echo "$cont.$subcont"; ?>"></a><li>
-        <a href="#"><?php echo "$cont.$subcont. "; ?>Organización de los indicadores</a></li>
-        <?php $subcont++; ?>
-	<p>Desde el menú superior, usted puede acceder a la sección de indicadores, donde se muestra información relativa al sistema de correo de la Universidad así como estadísticas propias de la aplicación de Seguimiento de correo.</p>
-	<p>Dicha información se clasifica en pestañas de la siguiente forma:</p>
-	<p><center><img src="<?php echo site_url('img/faq/listmenuindicadores.png');?>" /></center></p>
-	<p>Analizando dicha distribución, tenemos:</p>
-	<p>- <b>Indicadores globales</b>: Aquí podrá ver indicadores relativos al correo desde la puesta en marcha de la aplicación de seguimiento.</p>
-	<p>- <b>Indicadores temporales, vista diaria</b>: Aquí podrá ver distintas gráficas que mostrarán información acerca del uso del correo clasificado por horas en un día determinado, que puede determinar con el selector de fecha. Se guardarán indicadores de los horas pertenecientes a los días de los últimos seis meses.</p>
-	<p>- <b>Indicadores temporales, vista mensual</b>: Aquí podrá ver distintas gráficas que mostrarán información acerca del uso del correo clasificado por días en un mes determinado, que puede determinar con el selector de fecha. Se guardarán indicadores de los días pertenecientes a los últimos tres años.</p>
-	<p>- <b>Indicadores temporales, vista anual</b>: Aquí podrá ver distintas gráficas que mostrarán información acerca del uso del correo clasificado por meses en un año determinado, que puede determinar con el selector de fecha. Se guardarán indicadores de los meses pertenecientes a los últimos diez años.</p>
-	<p>- <b>Indicadores temporales, histórico del sistema</b>: Aquí podrá ver distintas gráficas que mostrarán información acerca del uso del correo clasificado por años, desde el año de puesta en producción de seguimiento de mensajes.</p>
-
-
-        <a name="<?php echo "$cont.$subcont"; ?>"></a><li>
-        <a href="#"><?php echo "$cont.$subcont. "; ?>Indicadores de volumen</a></li>
-        <?php $subcont++; ?>
-	<p>Estos indicadores pueden consultarse desde la vista diaria, mensual, anual o histórico del sistema. Su aspecto es el siguiente:</p>
-        <p><center><img src="<?php echo site_url('img/faq/volumen.png');?>" /></center></p>
-        <p>Los indicadores de volumen de correo hacen referencia a la cantidad de correo que se envía y/o recibe, sin distinguir ningún caso concreto.</p>
-
-
-        <a name="<?php echo "$cont.$subcont"; ?>"></a><li>
-        <a href="#"><?php echo "$cont.$subcont. "; ?>Indicadores de correo spam/ham</a></li>
-        <?php $subcont++; ?>
-        <p>Estos indicadores pueden consultarse desde la vista diaria, mensual, anual o histórico del sistema. Su aspecto es el
- siguiente:</p>
-        <p><center><img src="<?php echo site_url('img/faq/spamham.png');?>" /></center></p>
-        <p>Los indicadores de volumen de correo hacen referencia a la cantidad de correo que se envía y/o recibe, distinguiéndose entre aquellos correos que el sistema antispam marcó como spam y aquellos que se consideraron correos legítimos (o correo ham).</p>
-
-
-        <a name="<?php echo "$cont.$subcont"; ?>"></a><li>
-        <a href="#"><?php echo "$cont.$subcont. "; ?>Indicadores de correos entregados</a></li>
-        <?php $subcont++; ?>
-        <p>Estos indicadores pueden consultarse desde la vista diaria, mensual, anual o histórico del sistema. Su aspecto es el
- siguiente:</p>
-        <p><center><img src="<?php echo site_url('img/faq/entregados.png');?>" /></center></p>
-        <p>Los indicadores de volumen de correo hacen referencia a la cantidad de correo que se envía y/o recibe, distinguiéndose entre aquellos correos que se entregaron a dominios propios de la Universidad de Sevilla y correos cuyo destintario era externo a la Universidad.</p>
-
-
-        <a name="<?php echo "$cont.$subcont"; ?>"></a><li>
-        <a href="#"><?php echo "$cont.$subcont. "; ?>Indicadores de correos detenidos</a></li>
-        <?php $subcont++; ?>
-        <p>Estos indicadores pueden consultarse desde la vista diaria, mensual, anual o histórico del sistema. Su aspecto es el
- siguiente:</p>
-        <p><center><img src="<?php echo site_url('img/faq/detenidos.png');?>" /></center></p>
-        <p>Los indicadores de volumen de correo hacen referencia a la cantidad de correo que se envía y/o recibe, distinguiéndose los casos por los que los correos fueron detenidos y no se entregaron a su destinario (correos que contenían virus, destinatario no existente, buzón del destintario lleno, etc etc).</p>
-
-
-
-
-
-
-
-<?php $cont++; $subcont = 1; ?>
-<h2>
-        <a name="<?php echo $cont; ?>"></a>
-        <?php echo $cont; ?>. Otras cuestiones
-</h2>
-
-        <a name="<?php echo "$cont.$subcont"; ?>"></a><li>
-        <a href="#"><?php echo "$cont.$subcont. "; ?>Soporte al usuario</a></li>
-        <?php $subcont++; ?>
-<p>Si la ayuda que busca no se encuentra en esta página o bien tiene alguna dificultad para realizar el seguimiento algún correo electrónico, si simplemente quiere hacer una sugerencia o reportar un error en la aplicación, puede hacerlo escribiendo un correo a la dirección de correo electrónico <a href="mailto:servicios.red@usal.es">servicios.red@usal.es</a>.</p>
-
-        <a name="<?php echo "$cont.$subcont"; ?>"></a><li>
-        <a href="#"><?php echo "$cont.$subcont. "; ?>Licencia de Software</a></li>
-        <?php $subcont++; ?>
-<p>"Seguimiento de mensajes" esta construido bajo licencia de Software libre, en concreto hace uso de la licencia Affero GPL 3.0 (<a href="http://www.gnu.org/licenses/agpl-3.0.html">The GNU Affero General Public License</a>)</p>
-<p>La licencia pública general de Affero (en inglés Affero General Public License, también Affero GPL o AGPL ) es una licencia copyleft derivada de la Licencia Pública General de GNU diseñada específicamente para asegurar la cooperación con la comunidad en el caso de software que corra en servidores de red.</p>
-<p>La Affero GPL es íntegramente una GNU GPL con una cláusula nueva que añade la obligación de distribuir el software (código fuente) si éste se ejecuta para ofrecer servicios a través de una red de ordenadores.</p>
-<p>La Free Software Foundation recomienda que el uso de la GNU AGPLv3 sea considerado para cualquier software que usualmente corra sobre una red.</p>
-<p>Por favor, si va a hacer uso de este Software, no olvide respetar las clausulas de esta licencia.</p>
-
-        <a name="<?php echo "$cont.$subcont"; ?>"></a><li>
-        <a href="#"><?php echo "$cont.$subcont. "; ?>¿Cómo funciona Seguimiento?: El código fuente</a></li>
-        <?php $subcont++; ?>
-<p><center><img src="<?php echo site_url('img/faq/esquema.png');?>" /></center></p>
-<p>Para aquellos usuarios interesados en saber como funciona Seguimiento, tienen a su disposición, en la página pública del proyecto de <a href="http://seguimiento.org.es" target="_blank"><b>Seguimiento</b></a>, todo el código fuente de la aplicación.</p>
-<p>Al tratarse "Seguimiento de mensajes" de un <a href="#9.2">proyecto de Software Libre</a>, usted puede disfrutar también de su código fuente, e incluso si quiere ayudar a mejorar la aplicación puede aportar su propio código fuente y contribuir así al crecimiento de este proyecto.</p>
-<p>Nota: Puede observar que dicho código fuente está linkado desde el pie de toda página perteneciente a esta web, por favor si está interesado en reutilizar este código no elimine dicho enlace del pie de página.</p>
 
 
 
