@@ -68,9 +68,6 @@
 <?php if($campo == "tipo") { $cad = $img; $order = $contrario;}else{ $cad = ""; $order = $sentido; }?>
 <th width="110px"><a href="<?php echo $base; ?>/tipo/<?php echo $order;?>"><?php echo $cad;?> Tipo acceso</a></th>
 
-<?php if($campo == "contador") { $cad = $img; $order = $contrario;}else{ $cad = ""; $order = $sentido; }?>
-<th width="100px"><a href="<?php echo $base; ?>/contador/<?php echo $order;?>"><?php echo $cad;?> Num. accesos</a></th>
-
 <?php if($campo == "ip") { $cad = $img; $order = $contrario;}else{ $cad = ""; $order = $sentido; }?>
 <th width="90x"><a href="<?php echo $base; ?>/ip/<?php echo $order;?>"><?php echo $cad;?> Dirección IP</a></th>
 							
@@ -106,9 +103,6 @@
                                                         <?php } ?>
 						        <td><?php echo htmlentities($row->protocolo);?></td>
                                                         <td><?php echo htmlentities($row->tipo);?></td>
-                                                        <td><?php  echo $row->contador;?>
-							<?php echo ($row->contador > 1)?'accesos':'acceso'; ?>
-							</td>
                                                         <td><?php echo $row->ip;?></td>
                                                         <td><?php echo "Realizado el día ".date("d/m/Y, H:i",$row->fecha);?></td>
                                                 </tr>
