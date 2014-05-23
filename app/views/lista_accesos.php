@@ -79,7 +79,7 @@
 <?php
  if ($accesos->num_rows() ==  0)
                 {
-			echo "<tr class='even'><td colspan='5'>No se ha encontrado ningún acceso en \"$titulo\"</td></tr>";
+			echo "<tr class='even'><td colspan='4'>No se ha encontrado ningún acceso en \"$titulo\"</td></tr>";
                 }else
                 {
                         $cont = 1;
