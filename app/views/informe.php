@@ -188,12 +188,6 @@
         $this->db->from('mensajes');
         $datos[$i] =  $this->db->count_all_results();
 	$i++;
-		
-	$etiquetas[$i] = "Errores en mailman";
-	$this->db->where($where." AND estado = 433");
-        $this->db->from('mensajes');
-        $datos[$i] =  $this->db->count_all_results();
-	$i++;
 
         $etiquetas[$i] = "Errores en MTA destino";
         $this->db->where($where." AND estado = 452");
