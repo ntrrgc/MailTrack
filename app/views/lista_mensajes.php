@@ -85,10 +85,20 @@
 
 			//En función del estado actual del mensajes, mostramos un icono u otro
 
+                                $mensajeListas = false;
+                                $patrones = $this->config->item("patrones_para_listas");
+                                foreach ($patrones as $patron) {
+                                        if (stristr($row->mfrom, $patron) || stristr($row->mto, $patron)) {
+                                                $mensajeListas = true;
+                                        }
+                                }
+
 				if($row->estado < 200){$img="wait";}
 				elseif($row->estado < 350){$img="warning";}
-				elseif($row->estado < 400){$img="valid";}
-				else{$img="error";}
+				elseif($row->estado < 400 && !$mensajeListas){$img="valid";}
+                                elseif($row->estado < 400 && $mensajeListas){$img="folder_accept";}
+				elseif($mensajeListas){$img="delete_folder";}
+                                else{$img="error";}
 
 				?>
                                                 <tr <?php echo $tr; ?>>
