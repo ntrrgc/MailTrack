@@ -571,8 +571,8 @@ ul.tabbed a {text-decoration: none;}
 }
 #navigation a:hover {color: #FFF; }
 #navigation li.current_page_item a, #navigation li.current_page_parent a {color: #FFE;}
-#navigation li.current_page_item a {background: url('../img/navigation-arrow-2.gif') no-repeat center bottom;}
-#navigation li.current_page_parent a {background: url('../img/navigation-arrow-2.gif') no-repeat center bottom;}
+#navigation li.current_page_item a {background: url('../img/navigation-arrow-2.gif') no-repeat 24px bottom;}
+#navigation li.current_page_parent a {background: url('../img/navigation-arrow-2.gif') no-repeat 24px bottom;}
 
 #navigation li img{
 	float: left;
