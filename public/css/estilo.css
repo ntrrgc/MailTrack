@@ -30,7 +30,7 @@ a img {border: none;}
 
 html {
 	height: 100%;
-	padding-bottom: 1px; /* force scrollbars */
+	padding-bottom: 0px;
 }
 
 body {
