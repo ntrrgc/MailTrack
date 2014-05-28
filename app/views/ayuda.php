@@ -84,7 +84,7 @@
 
         <div class="nivel1"> 
                 <?php echo "$cont.$subcont"; ?>.
-                <a href="#<?php echo "$cont.$subcont"; ?>">Información del listado de mensajes</a>
+                <a href="#<?php echo "$cont.$subcont"; ?>">Información del listado</a>
                 <?php $subcont++; ?>
         </div>
 
@@ -147,7 +147,7 @@
 
          <div class="nivel1">
                 <?php echo "$cont.$subcont"; ?>.
-                <a href="#<?php echo "$cont.$subcont"; ?>">Descripción detallada de estados de un mensaje</a>
+                <a href="#<?php echo "$cont.$subcont"; ?>">Definición de estados para un mensaje</a>
                 <?php $subcont++; ?>
         </div>
 
@@ -225,45 +225,12 @@
 
         <div class="nivel1">
                 <?php echo "$cont.$subcont"; ?>.
-                <a href="#<?php echo "$cont.$subcont"; ?>">Posibles estados de un acceso</a>
-                <?php $subcont++; ?>
-        </div>
-
-        <div class="nivel1">
-                <?php echo "$cont.$subcont"; ?>.
-                <a href="#<?php echo "$cont.$subcont"; ?>">Vista detallada de un acceso</a>
+                <a href="#<?php echo "$cont.$subcont"; ?>">Informe de los accesos</a>
                 <?php $subcont++; ?>
         </div>
 
 
 <?php $cont++; $subcont = 1; ?>
-<div class="separa-nivel">&nbsp;</div>
-
-
-
-
-
-
-<div class="nivel0">
-        <a href="#<?php echo "$cont"; ?>"><?php echo "$cont"; ?>. Otras cuestiones</a>
-</div>
-         <div class="nivel1">
-                <?php echo "$cont.$subcont"; ?>.
-                <a href="#<?php echo "$cont.$subcont"; ?>">Soporte al usuario</a>
-                <?php $subcont++; ?>
-	</div>
-
-         <div class="nivel1">
-                <?php echo "$cont.$subcont"; ?>.
-                <a href="#<?php echo "$cont.$subcont"; ?>">Licencia de Software</a>
-                <?php $subcont++; ?>
-	</div>
-
-         <div class="nivel1">
-                <?php echo "$cont.$subcont"; ?>.
-                <a href="#<?php echo "$cont.$subcont"; ?>">¿Cómo funciona Seguimiento?: El código fuente</a>
-                <?php $subcont++; ?>
-        </div>
 <div class="separa-nivel">&nbsp;</div>
 
 </fieldset>
@@ -456,7 +423,7 @@
 <?php $cont++; $subcont = 1; ?>
 <h2>
         <a name="<?php echo $cont; ?>"></a>
-        <?php echo $cont; ?>. Realizando un seguimiento de un correo
+        <?php echo $cont; ?>. Realizando un seguimiento de un mensaje
 </h2>
 
 
@@ -471,7 +438,7 @@
         <a name="<?php echo "$cont.$subcont"; ?>"></a><li>
         <a href="#"><?php echo "$cont.$subcont. "; ?>¿Cómo interpretar la vista detallada de mensaje?</a></li>
         <?php $subcont++; ?>
-<p>Para acceder a la vista detallada de un mensaje, debemos cliquear sobre su <a href="#3.4">icono de estado en la lista de mensajes</a>. En la vista detallada del mensaje, destacamos las siguientes opciones marcadas en rojo sobre la captura:</p>
+<p>Para acceder a la vista detallada de un mensaje, debemos hacer clic sobre su <a href="#3.4">icono de estado en la lista de mensajes</a>. En la vista detallada del mensaje, destacamos las siguientes opciones marcadas en rojo sobre la captura:</p>
 <p><center><img src="<?php echo site_url('img/faq/view.png');?>" /></center></p>
 <p>Detallaremos ahora cada uno de estos campos marcados:</p>
 <p><b>1) Botón para volver a la lista</b>: Este botón le permitirá volver a la lista de mensajes anterior a la que pertenece el mensaje que está visualizando.</p>
@@ -526,7 +493,7 @@
 <?php $cont++; $subcont = 1; ?>
 <h2>
         <a name="<?php echo $cont; ?>"></a>
-        <?php echo $cont; ?>. Visualización de un informe
+        <?php echo $cont; ?>. Visualización de informes
 </h2>
 
         <a name="<?php echo "$cont.$subcont"; ?>"></a><li>
@@ -536,7 +503,7 @@
 
 <p>Para ello, el sistema agrupa los mensajes en una serie de grupos en función de su estado, y genera unas gráficas con dicha información para el usuario final.</p>
 
-<p>Se podrá generar un informe a partir de cualquier listado de mensajes, tal y como se describió <a href="#3.3">anteriormente en esta página de ayuda</a></p>
+<p>Se podrá generar un informe a partir de cualquier listado de mensajes, tal y como se describió <a href="#3.3">anteriormente en esta página de ayuda</a>.</p>
 
 
         <a name="<?php echo "$cont.$subcont"; ?>"></a><li>
@@ -588,7 +555,11 @@
         <a name="<?php echo "$cont.$subcont"; ?>"></a><li>
         <a href="#"><?php echo "$cont.$subcont. "; ?>¿Qué es un acceso?</a></li>
         <?php $subcont++; ?>
-        <p>Un acceso representa una conexión contra los servidores de correo de la Universidad de Salamanca. En este caso, se clasifican atendiendo al tipo de protocolo que se usó para realizar dicha conexión. Distinguiéndose varios casos: Buzón web (que realmente es un caso de conexión IMAP/IMAPS), protocolo IMAP/IMAPS y protocolo POP/POPS.</p>
+        <p>Un acceso representa una conexión contra los servidores de la Universidad de Salamanca.</p>
+
+        <p>Cada vez que inicia sesión en un servidor de la Universidad de Salamanca a través de idUSAL el acceso es registrado y puede ser consultado desde esta interfaz.</p>
+
+        <p>Adicionalmente, el acceso al servicio de correo mediante POP o IMAP también genera registros en la aplicación que pueden ser consultados.</p>
 
         <a name="<?php echo "$cont.$subcont"; ?>"></a><li>
         <a href="#"><?php echo "$cont.$subcont. "; ?>Organización de los accesos</a></li>
@@ -604,14 +575,16 @@
         <a name="<?php echo "$cont.$subcont"; ?>"></a><li>
         <a href="#"><?php echo "$cont.$subcont. "; ?>Informe de los accesos</a></li>
         <?php $subcont++; ?>
-<p>En la tabla todos mis acceso, puede encontrar toda la información de los accesos </p>
+<p>En la vista <i>Accesos</i>, puede encontrar toda la información de sus accesos.</p>
 <p><center><img src="<?php echo site_url('img/faq/accesoIdUSAL.png');?>" /></center></p>
 
+<p>En el menú superior podrá filtrar los accesos de acuerdo al protocolo sobre el que se realizaron. En cada caso se mostrará una tabla con los siguientes campos:</p>
 
-En este apartado podemos encontrar los accesos a los diferentes recursos a través de idUSAL. Los campos más importantes son: <br>
-<b>Tipo de acceso</b> : Que indicará el recurso, por ejemplo listas.usal.es o seguimiento.usal.es ...  <br>
-<b> Dirección IP </b> : Que indica la dirección IP desde la que se ha originado la conexión. <br>
-<b> Fecha del último acceso </b>: Que indica la fecha del último acceso al recurso.  
+<p>
+<b>Tipo de acceso</b>: Indicará el recurso al que se ha accedido, por ejemplo listas.usal.es o seguimiento.usal.es.<br>
+<b>Dirección IP</b>: Indica la dirección IP desde la que se ha originado la conexión. <br>
+<b>Fecha del último acceso</b>: Indica la fecha del último acceso al recurso.  
+</p>
 
 
 
